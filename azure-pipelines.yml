@@ -74,5 +74,3 @@ stages:
         - downloadArtifacts:
           artifacts:
             - name: NewTestFolder
-        
----------------------------------------------------------------
