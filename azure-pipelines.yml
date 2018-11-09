@@ -53,7 +53,7 @@ stages:
   - job: MyJob3
     timeoutInMinutes: 2
     cancelTimeoutInMinutes: 2
-    dependsOn: MyJob2
+    dependsOn: MyJob
     
     pool:
       name: 'Default'
