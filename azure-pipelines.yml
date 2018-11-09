@@ -1,16 +1,78 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+stages:
+- stage: stage1
+  jobs:
+  - job: MyJob
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
 
-pool:
-  name: 'Default'
+    pool:
+      name: 'Default'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+    steps:
+      - script: echo Hello world
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+      - task: PublishBuildArtifacts@1
+        displayName: Publish ReadMe
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1
+
+      - task: PublishBuildArtifacts@1
+        displayName: Publish yml
+        inputs:
+          pathToPublish: azure-pipelines.yml
+          artifactName: Artifact2
+
+  - job: MyJob2
+    dependsOn: MyJob
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+
+    pool:
+      name: 'Default'
+
+    steps:
+      - downloadArtifacts:
+        artifacts:
+          - name: Artifact1
+            pattern: '**/*.txt'
+          - name: Artifact2
+
+      - script: echo Hello world2
+
+      - task: PublishBuildArtifacts@1
+        displayName: Publish NewTestFolder
+        inputs:
+          pathToPublish: NewTestFolder
+          artifactName: NewTestFolder
+      #- task: DownloadBuildArtifacts@0
+      #  displayName: download artifact1
+      #  inputs:
+      #    artifactName: Artifact2
+          
+  - job: MyJob3
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+    dependsOn: MyJob2
+    
+    pool:
+      name: 'Default'
+
+    steps:
+      - script: echo Hello MyJob3
+
+- stage: stage2
+  dependsOn: stage1
+  jobs:
+    - job: MyJob
+
+      pool:
+        name: 'Default'
+      
+      steps:
+        - script: echo I am stage2 MyJob
+        - downloadArtifacts:
+          artifacts:
+            - name: NewTestFolder
+        
+---------------------------------------------------------------
