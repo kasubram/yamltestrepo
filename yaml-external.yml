@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+  - pipeline: MyPipeline
+    definition: First
+    
+jobs:
+  - job: MyJob
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+
+    pool:
+      name: 'Default'
+
+    steps:
+      - script: echo Hello world
