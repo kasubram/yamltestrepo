@@ -2,6 +2,7 @@ resources:
   pipelines:
   - pipeline: MyPipeline
     type: build
+    project: p1
     definition: First
     
 jobs:
