@@ -13,3 +13,4 @@ jobs:
 
     steps:
       - script: echo Hello world
+      - downloadArtifact: MyPipeline
