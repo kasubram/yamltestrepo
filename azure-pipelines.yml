@@ -47,6 +47,11 @@ stages:
         inputs:
           pathToPublish: NewTestFolder
           artifactName: NewTestFolder
+      - task: PublishBuildArtifacts@1
+        displayName: Publish NewTestFolder
+        inputs:
+          pathToPublish: NewTestFolder
+          artifactName: NewTestFolder
           
       #- task: DownloadBuildArtifacts@0
       #  displayName: download artifact1
