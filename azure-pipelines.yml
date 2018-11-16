@@ -38,9 +38,7 @@ stages:
         
       - downloadArtifact:
         name: Artifact2
-        pattern: '**'
 
-      - script: echo Hello world2
       - script: echo Hello world2
 
       - task: PublishBuildArtifacts@1
