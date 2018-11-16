@@ -32,9 +32,9 @@ stages:
       name: 'Default'
 
     steps:
-      - downloadArtifact:
-        name: Artifact1
-        pattern: '**/*.txt'
+      #- downloadArtifact:
+      #  name: Artifact1
+      #  pattern: '**/*.txt'
       - downloadArtifact:
         name: Artifact2
         pattern: '**'
