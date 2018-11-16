@@ -33,10 +33,10 @@ stages:
 
     steps:
       - downloadArtifact:
-        artifacts:
-          - name: Artifact1
-            pattern: '**/*.txt'
-          - name: Artifact2
+        name: Artifact1
+        pattern: '**/*.txt'
+      - downloadArtifact:
+        name: Artifact2
 
       - script: echo Hello world2
 
@@ -72,5 +72,4 @@ stages:
       steps:
         - script: echo I am stage2 MyJob
         - downloadArtifact:
-          artifacts:
-            - name: NewTestFolder
+          name: NewTestFolder
