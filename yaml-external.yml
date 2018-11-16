@@ -16,5 +16,4 @@ jobs:
     steps:
       - script: echo Hello world
       - downloadArtifact: MyPipeline
-        #artifacts:
-        #  - name: Artifact2
+        name: Artifact2
