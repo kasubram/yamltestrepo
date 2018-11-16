@@ -64,7 +64,7 @@ stages:
 - stage: stage2
   dependsOn: stage1
   jobs:
-    - job: MyJob
+    - job: MyJobFromStage2
 
       pool:
         name: 'Default'
