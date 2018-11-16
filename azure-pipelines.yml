@@ -35,8 +35,8 @@ stages:
       - downloadArtifact:
         name: Artifact1
         pattern: '**/*.txt'
-      #- downloadArtifact:
-      #  name: Artifact2
+      - downloadArtifact:
+        name: Artifact2
 
       - script: echo Hello world2
 
