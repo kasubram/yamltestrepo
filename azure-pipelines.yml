@@ -41,6 +41,7 @@ stages:
         pattern: '**'
 
       - script: echo Hello world2
+      - script: echo Hello world2
 
       - task: PublishBuildArtifacts@1
         displayName: Publish NewTestFolder
