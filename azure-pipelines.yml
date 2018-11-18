@@ -73,3 +73,5 @@ stages:
       
       steps:
         - script: echo I am stage2 MyJob
+        - downloadArtifact:
+          name: NewTestFolder
