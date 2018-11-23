@@ -36,8 +36,8 @@ stages:
         name: Artifact1
         pattern: '**/*.txt'
         
-      - downloadArtifact:
-        name: Artifact2
+      #- downloadArtifact:
+      #  name: Artifact2
 
       - script: echo Hello world2
 
@@ -52,16 +52,16 @@ stages:
       #  inputs:
       #    artifactName: Artifact2
           
-  - job: MyJob3
-    timeoutInMinutes: 2
-    cancelTimeoutInMinutes: 2
-    dependsOn: MyJob
-    
-    pool:
-      name: 'Default'
-
-    steps:
-      - script: echo Hello MyJob3
+ # - job: MyJob3
+ #   timeoutInMinutes: 2
+ #   cancelTimeoutInMinutes: 2
+ #   dependsOn: MyJob
+ #   
+ #   pool:
+ #     name: 'Default'
+ #
+ #   steps:
+ #     - script: echo Hello MyJob3
 
 - stage: stage2
   dependsOn: stage1
