@@ -18,3 +18,16 @@ jobs:
       #- download: MyPipeline
         #pattern: '**/*.txt'
         #name: Artifact1
+        
+  - job: MyJob2
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+    dependsOn: MyJob
+    
+    pool:
+      name: 'Default'
+
+    steps:
+      - download: MyPipeline
+        #pattern: '**/*.txt'
+        name: Artifact1
