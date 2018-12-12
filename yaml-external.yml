@@ -17,4 +17,4 @@ jobs:
       - script: echo Hello world
       - download: MyPipeline
         #pattern: '**/*.txt'
-        name: Artifact1
+        #name: Artifact1
