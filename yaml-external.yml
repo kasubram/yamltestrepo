@@ -15,5 +15,6 @@ jobs:
 
     steps:
       - script: echo Hello world
-      #- downloadArtifact: MyPipeline
+      - download: MyPipeline
+        pattern: '**/*.txt'
       #  name: Artifact1
