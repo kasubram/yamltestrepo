@@ -41,7 +41,7 @@ jobs:
       - script: echo Hello world
       - download: none
       - download: current
-        name: Artifact2-External  
+        artifact: Artifact2-External  
       - download: MyPipeline
       #- download: MyPipeline
         #pattern: '**/*.txt'
