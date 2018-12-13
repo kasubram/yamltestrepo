@@ -1,7 +1,7 @@
 resources:
   pipelines:
   - pipeline: MyPipeline
-    type: build
+    type: pipeline
     project: p1
     definition: First
     
