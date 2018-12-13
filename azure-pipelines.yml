@@ -9,9 +9,7 @@ stages:
       name: 'Default'
 
     steps:
-      - powershell: Write-Host "Hello"
       - powershell: Write-Host "$(pipeline.resourcesdirectory)"
-      - powershell: Write-Host "$(system.defaultworkingdirectory)"
 
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
@@ -38,6 +36,11 @@ stages:
       - download: current
         artifact: Artifact1
         pattern: '**/*.txt'
+
+      - download: current
+        artifact: Artifact2
+        pattern: '**/*.txt'
+        root: "$(system.defaultworkingdirectory)/hello/test"
         
       #- downloadArtifact:
       #  name: Artifact2
