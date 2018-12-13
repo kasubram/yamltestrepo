@@ -24,7 +24,7 @@ jobs:
         displayName: Publish TestFolder2
         inputs:
           pathToPublish: testFolder
-          artifactName: Artifact1-External       
+          artifactName: Artifact2-External       
       #- download: MyPipeline
         #pattern: '**/*.txt'
         #name: Artifact1
