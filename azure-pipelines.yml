@@ -33,7 +33,7 @@ stages:
 
     steps:
       - download:
-        name: Artifact1
+        artifact: Artifact1
         pattern: '**/*.txt'
         
       #- downloadArtifact:
