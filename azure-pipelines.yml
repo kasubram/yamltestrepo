@@ -35,7 +35,7 @@ stages:
       - download: current
         artifact: Artifact1
         #patterns: ['**/*.txt', '**/*.ps1']
-        patterns: '**/*.txt,**/*.ps1'
+        patterns: '**/*.ps1'
 
       - download: current
         artifact: Artifact2
