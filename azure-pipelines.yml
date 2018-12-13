@@ -9,7 +9,7 @@ stages:
       name: 'Default'
 
     steps:
-      - script: echo Hello world
+      - powershell: echo $PIPELINE_RESOURCESDIRECTORY
 
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
