@@ -37,7 +37,7 @@ stages:
         patterns: ['**/*.cmd', '**/*.ps1']
         #patterns: '**/*.cmd;**/*.ps1'
 
-      - download: current
+      - download: 
         artifact: Artifact2
         root: "$(system.defaultworkingdirectory)/hello/test"
         
