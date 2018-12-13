@@ -9,7 +9,8 @@ stages:
       name: 'Default'
 
     steps:
-      - powershell: echo $PIPELINE_RESOURCESDIRECTORY
+      - powershell: Write-Host "Hello"
+      - powershell: Write-Host $PIPELINE_RESOURCESDIRECTORY
 
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
