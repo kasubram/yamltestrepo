@@ -33,6 +33,6 @@ jobs:
       name: 'Default'
 
     steps:
-      - download: MyPipeline
+      #- download: MyPipeline
         #pattern: '**/*.txt'
-        name: Artifact1
+        #name: Artifact1
