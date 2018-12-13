@@ -35,7 +35,7 @@ stages:
       - script: echo $PIPELINE_RESOURCESDIRECTORY
       - download: current
         artifact: Artifact1
-        pattern: '**/*.txt,**/*.ps1'
+        pattern: ['**/*.txt', '**/*.ps1']
 
       - download: current
         artifact: Artifact2
