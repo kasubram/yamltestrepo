@@ -16,12 +16,12 @@ jobs:
     steps:
       - script: echo Hello world
       - task: PublishBuildArtifacts@1
-        displayName: Publish TestFolder
+        displayName: Publish TestFolder1
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-External
       - task: PublishBuildArtifacts@1
-        displayName: Publish TestFolder
+        displayName: Publish TestFolder2
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-External       
