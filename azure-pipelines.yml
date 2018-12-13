@@ -10,8 +10,7 @@ stages:
 
     steps:
       - powershell: Write-Host "Hello"
-      - powershell: Write-Host "$SYSTEM_DEFAULTWORKINGDIRECTORY"
-      - powershell: Write-Host "$ENV:SYSTEM_DEFAULTWORKINGDIRECTORY"
+      - powershell: Write-Host "$(pipeline.resourcesdirectory)"
       - powershell: Write-Host "$(system.defaultworkingdirectory)"
 
       - task: PublishBuildArtifacts@1
