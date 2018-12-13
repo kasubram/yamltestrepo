@@ -34,8 +34,8 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
-        #patterns: ['**/*.txt', '**/*.ps1']
-        patterns: '**/*.cmd;**/*.ps1'
+        patterns: ['**/*.txt', '**/*.ps1']
+        #patterns: '**/*.cmd;**/*.ps1'
 
       - download: current
         artifact: Artifact2
