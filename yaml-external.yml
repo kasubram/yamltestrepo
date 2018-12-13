@@ -2,7 +2,7 @@ resources:
   pipelines:
   - pipeline: MyPipeline
     project: p1
-    definition: First
+    source: First
     
 jobs:
   - job: MyJob
