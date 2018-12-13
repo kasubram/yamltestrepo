@@ -32,15 +32,13 @@ stages:
       name: 'Default'
 
     steps:
+      - script: echo $PIPELINE_RESOURCESDIRECTORY
       - download: current
         artifact: Artifact1
         pattern: '**/*.txt'
         
       #- downloadArtifact:
       #  name: Artifact2
-
-      - script: echo Hello world2
-
       - task: PublishBuildArtifacts@1
         displayName: Publish NewTestFolder
         inputs:
