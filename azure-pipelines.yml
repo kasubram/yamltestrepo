@@ -32,7 +32,6 @@ stages:
       name: 'Default'
 
     steps:
-      - script: echo $PIPELINE_RESOURCESDIRECTORY
       - download: current
         artifact: Artifact1
         patterns: ['**/*.txt', '**/*.ps1']
