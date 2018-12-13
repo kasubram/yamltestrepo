@@ -19,7 +19,7 @@ stages:
 
       - task: PublishBuildArtifacts@1
         displayName: Publish yml
-        inputs:
+        inputs: 
           pathToPublish: azure-pipelines.yml
           artifactName: Artifact2
 
@@ -37,7 +37,7 @@ stages:
         patterns: ['**/*.cmd', '**/*.ps1']
         #patterns: '**/*.cmd;**/*.ps1'
 
-      - download: 
+      - download: current
         artifact: Artifact2
         root: "$(system.defaultworkingdirectory)/hello/test"
         
