@@ -20,6 +20,11 @@ jobs:
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-External
+      - task: PublishBuildArtifacts@1
+        displayName: Publish TestFolder
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1-External       
       #- download: MyPipeline
         #pattern: '**/*.txt'
         #name: Artifact1
