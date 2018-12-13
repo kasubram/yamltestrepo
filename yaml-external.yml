@@ -19,6 +19,7 @@ jobs:
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-External
+      - download: none
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder2
         inputs:
@@ -40,6 +41,8 @@ jobs:
       - script: echo Hello world
       - download: none
       - download: current
+        name: Artifact2-External  
+      - download: MyPipeline
       #- download: MyPipeline
         #pattern: '**/*.txt'
         #name: Artifact1
