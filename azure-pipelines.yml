@@ -39,7 +39,6 @@ stages:
 
       - download: current
         artifact: Artifact2
-        pattern: '**/*.txt'
         root: "$(system.defaultworkingdirectory)/hello/test"
         
       #- downloadArtifact:
