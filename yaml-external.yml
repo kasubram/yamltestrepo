@@ -40,8 +40,8 @@ jobs:
     steps:
       - script: echo Hello world
       - download: none
-      - download: current
-        artifact: Artifact2-External  
+      #- download: current
+      #  artifact: Artifact2-External  
       - download: MyPipeline
       #- download: MyPipeline
         #pattern: '**/*.txt'
