@@ -65,15 +65,15 @@ stages:
  #   steps:
  #     - script: echo Hello MyJob3
 
-#- stage: stage2
-#  dependsOn: stage1
-#  jobs:
-#    - job: MyJobFromStage2
+- stage: stage2
+  dependsOn: stage1
+  jobs:
+    - job: MyJobFromStage2
 
-#      pool:
-#        name: 'Default'
+      pool:
+        name: 'Default'
       
-#      steps:
-#        - script: echo I am stage2 MyJob
-#        - download: none
+      steps:
+        - script: echo I am stage2 MyJob
+        - download: none
          # pattern: '**/*.txt'
