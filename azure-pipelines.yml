@@ -76,4 +76,4 @@ stages:
       steps:
         - script: echo I am stage2 MyJob
         - download: current
-          pattern: '**/*.txt'
+          patterns: '**/*.txt'
