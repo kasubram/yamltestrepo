@@ -19,7 +19,7 @@ jobs:
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-External
-      - download: none
+      #- download: none
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder2
         inputs:
