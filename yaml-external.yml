@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - script: echo Hello world
-      - download: none
+      #- download: none
       #- download: current
       #  artifact: Artifact2-External  
       - download: MyPipeline
