@@ -42,7 +42,8 @@ jobs:
       #- download: none
       #- download: current
       #  artifact: Artifact2-External  
-      - download: MyPipeline
       #- download: MyPipeline
+      - download: MyPipeline
+        artifact: Artifact1
         #pattern: '**/*.txt'
-        #name: Artifact1
+        
