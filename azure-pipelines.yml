@@ -98,13 +98,13 @@ stages:
     steps:
       - script: echo test
 
-  #- job: No_Download_Optimization_for_user_task
-  #  displayName: Download and try to fail user task when there is no dependency
-  #  pool:
-  #    name: 'Default'
-  #  steps:
-  #     - download: current
-  #       artifact: Artifact1000
+  - job: No_Download_Optimization_for_user_task
+    displayName: Download and try to fail user task when there is no dependency
+    pool:
+      name: 'Default'
+    steps:
+       - download: current
+         artifact: Artifact1000
 #----- download optimization end --------------------#
 
 
