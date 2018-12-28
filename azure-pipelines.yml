@@ -21,7 +21,7 @@ stages:
           pathToPublish: azure-pipelines.yml
           artifactName: Artifact2
   
-  - job: Download all by default
+  - job: Download_all_by_default
     steps:
       - script: echo Will download all artifacts uploaded in Job1
       
