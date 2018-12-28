@@ -10,7 +10,7 @@ jobs:
     pool:
       name: 'Default'
     steps:
-      - script: download all artifact
+      - script: echo download all artifact
 
   - job: download_specific_artifact
     displayName: download specific artifact
