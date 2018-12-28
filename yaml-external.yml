@@ -3,7 +3,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
-    version: 12
+
 jobs:
   - job: download_all_artifact
     displayName: download all artifact
