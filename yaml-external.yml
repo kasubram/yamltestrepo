@@ -3,6 +3,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
+    version: 18
 
 jobs:
   - job: download_all_artifact
