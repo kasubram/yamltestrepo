@@ -22,6 +22,7 @@ stages:
           artifactName: Artifact2
   
   - job: Download_all_by_default
+    displayName: Download all artifacts by default
     steps:
       - script: echo Will download all artifacts uploaded in Job1
       
