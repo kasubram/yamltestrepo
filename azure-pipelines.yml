@@ -97,20 +97,33 @@ stages:
         artifact: Artifact1
         root: "$(pipeline.resourcesdirectory)/hello/test"
         
+  - job: Download_apply_common_setting
+    displayName: Download apply commen setting for all artifact
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        patterns: ['**/*.cmd', '**/*.ps1']
           
-
 - stage: stage2
   dependsOn: stage1
   jobs:
     - job: MyJobFromStage2
-
+      displayName: download all artifacts from stage1 jobs
       pool:
         name: 'Default'
-      
       steps:
-        - script: echo I am stage2 MyJob
-        - download: current
-          patterns: '**/*.txt'
+        - script: echo I am stage2 Job
+
+- stage: stage3
+  jobs:
+    - job: MyJobFromStage3
+      displayName: don't download any artifacts from stage1 jobs as there is no dependency
+      pool:
+        name: 'Default'
+      steps:
+        - script: echo I am stage3 Job
 
 
 
