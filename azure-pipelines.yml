@@ -74,7 +74,7 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
-        patterns: '*.txt'
+        patterns: '**/*.txt'
 
   - job: Download_pattern_sequence
     displayName: Download pattern sequence
@@ -87,34 +87,17 @@ stages:
         patterns: ['**/*.cmd', '**/*.ps1']
 
 #----- patterns end --------------------#
-
-      #- download: current
-      #  artifact: Artifact2
-      #  root: "$(system.defaultworkingdirectory)/hello/test"
+  - job: Download_to_custom_location
+    displayName: Download to custom location
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        root: "$(pipeline.resourcesdirectory)/hello/test"
         
-      #- downloadArtifact:
-      #  name: Artifact2
-      #- task: PublishBuildArtifacts@1
-      #  displayName: Publish NewTestFolder
-      #  inputs:
-      #    pathToPublish: NewTestFolder
-      #    artifactName: NewTestFolder
           
-      #- task: DownloadBuildArtifacts@0
-      #  displayName: download artifact1
-      #  inputs:
-      #    artifactName: Artifact2
-          
- # - job: MyJob3
- #   timeoutInMinutes: 2
- #   cancelTimeoutInMinutes: 2
- #   dependsOn: MyJob
- #   
- #   pool:
- #     name: 'Default'
- #
- #   steps:
- #     - script: echo Hello MyJob3
 
 - stage: stage2
   dependsOn: stage1
@@ -128,3 +111,13 @@ stages:
         - script: echo I am stage2 MyJob
         - download: current
           patterns: '**/*.txt'
+
+
+
+      #- downloadArtifact:
+      #  name: Artifact2
+      #- task: PublishBuildArtifacts@1
+      #  displayName: Publish NewTestFolder
+      #  inputs:
+      #    pathToPublish: NewTestFolder
+      #    artifactName: NewTestFolder
