@@ -71,7 +71,7 @@ stages:
 
 #----- patterns end --------------------#
 
--   job: Download_to_custom_location
+  - job: Download_to_custom_location
     displayName: Download to custom location
     dependsOn: Job1
     pool:
