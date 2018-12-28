@@ -48,23 +48,6 @@ stages:
     steps:
       - download: none
 
-#----- download optimization begin --------------------#
-  - job: Download_Optimization_for_selfinjected_task
-    displayName: Don't download automatically if no dependency
-    pool:
-      name: 'Default'
-    steps:
-      - download: none
-
-  #- job: No_Download_Optimization_for_user_task
-  #  displayName: Download and try to fail user task when there is no dependency
-  #  pool:
-  #    name: 'Default'
-  #  steps:
-  #     - download: current
-  #       artifact: Artifact1000
-#----- download optimization end --------------------#
-
 #----- patterns begin --------------------#
   - job: Download_pattern_literal
     displayName: Download pattern literal 
@@ -87,7 +70,8 @@ stages:
         patterns: ['**/*.cmd', '**/*.ps1']
 
 #----- patterns end --------------------#
-  - job: Download_to_custom_location
+
+- job: Download_to_custom_location
     displayName: Download to custom location
     dependsOn: Job1
     pool:
@@ -105,7 +89,25 @@ stages:
     steps:
       - download: current
         patterns: ['**/*.cmd', '**/*.ps1']
-          
+
+#----- download optimization begin --------------------#
+  - job: Download_Optimization_for_selfinjected_task
+    displayName: Don't download automatically if no dependency
+    pool:
+      name: 'Default'
+    steps:
+      - download: none
+
+  #- job: No_Download_Optimization_for_user_task
+  #  displayName: Download and try to fail user task when there is no dependency
+  #  pool:
+  #    name: 'Default'
+  #  steps:
+  #     - download: current
+  #       artifact: Artifact1000
+#----- download optimization end --------------------#
+
+
 - stage: stage2
   dependsOn: stage1
   jobs:
