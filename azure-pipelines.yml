@@ -9,8 +9,6 @@ stages:
       name: 'Default'
 
     steps:
-      - powershell: Write-Host "$(pipeline.resourcesdirectory)"
-
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
         inputs:
@@ -22,6 +20,8 @@ stages:
         inputs: 
           pathToPublish: azure-pipelines.yml
           artifactName: Artifact2
+  
+  - job: Download all by default
 
   - job: MyJob2
     dependsOn: MyJob
