@@ -63,7 +63,7 @@ stages:
       name: 'Default'
     steps:
        - download: current
-        artifact: Artifact1000
+         artifact: Artifact1000
 #----- download optimization end --------------------#
 
 
