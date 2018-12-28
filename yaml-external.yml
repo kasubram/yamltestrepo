@@ -12,7 +12,7 @@ jobs:
     steps:
       - script: download all artifact
 
-- job: download_specific_artifact
+  - job: download_specific_artifact
     displayName: download specific artifact
     pool:
       name: 'Default'
