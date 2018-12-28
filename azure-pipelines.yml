@@ -1,7 +1,7 @@
 stages:
 - stage: stage1
   jobs:
-  - job: MyJob
+  - job: Job1
     timeoutInMinutes: 2
     cancelTimeoutInMinutes: 2
 
@@ -22,7 +22,9 @@ stages:
           artifactName: Artifact2
   
   - job: Download all by default
-
+    steps:
+      - script: echo Will download all artifacts uploaded in Job1
+      
   - job: MyJob2
     dependsOn: MyJob
     timeoutInMinutes: 2
