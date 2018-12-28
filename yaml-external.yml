@@ -12,12 +12,17 @@ jobs:
       name: 'Default'
     steps:
       - script: echo download all artifact
+      - task: PublishBuildArtifacts@1
+        displayName: Publish TestFolder-internal
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1-internal
 
   - job: download_specific_artifact
     displayName: download specific artifact
     pool:
       name: 'Default'
-    steps:
-      - download: MyPipeline
-        artifact: Artifact1
+    #steps:
+    #  - download: MyPipeline
+    #    artifact: Artifact1
 
