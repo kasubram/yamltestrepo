@@ -5,45 +5,18 @@ resources:
     source: First
     
 jobs:
-  - job: MyJob
-    timeoutInMinutes: 2
-    cancelTimeoutInMinutes: 2
-
+  - job: download_all_artifact
+    displayName: download all artifact
     pool:
       name: 'Default'
-
     steps:
-      - script: echo Hello world
-      - task: PublishBuildArtifacts@1
-        displayName: Publish TestFolder1
-        inputs:
-          pathToPublish: testFolder
-          artifactName: Artifact1-External
-      #- download: none
-      - task: PublishBuildArtifacts@1
-        displayName: Publish TestFolder2
-        inputs:
-          pathToPublish: testFolder
-          artifactName: Artifact2-External       
-      #- download: MyPipeline
-        #pattern: '**/*.txt'
-        #name: Artifact1
-        
-  - job: MyJob2
-    timeoutInMinutes: 2
-    cancelTimeoutInMinutes: 2
-    dependsOn: MyJob
-    
+      - script: download all artifact
+
+- job: download_specific_artifact
+    displayName: download specific artifact
     pool:
       name: 'Default'
-
     steps:
-      - script: echo Hello world
-      #- download: none
-      #- download: current
-      #  artifact: Artifact2-External  
-      #- download: MyPipeline
       - download: MyPipeline
-        artifact: Artifact1
-        #pattern: '**/*.txt'
-        
+        name: Artifact1
+
