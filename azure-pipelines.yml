@@ -40,6 +40,34 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
+        
+        
+ - job: Download_none
+    displayName: Don't download any artifact
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: none
+
+#----- download optimization begin --------------------#
+ - job: Download_Optimization
+    displayName: Don't download automatically if no dependency
+    pool:
+      name: 'Default'
+    steps:
+      - download: none
+
+ - job: Download_Optimization
+    displayName: Don't download automatically if no dependency
+    pool:
+      name: 'Default'
+    steps:
+       - download: current
+        artifact: Artifact1
+#----- download optimization end --------------------#
+
+
         #patterns: ['**/*.cmd', '**/*.ps1']
         #patterns: '**/*.cmd;**/*.ps1'
 
