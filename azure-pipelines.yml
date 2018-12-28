@@ -51,20 +51,20 @@ stages:
       - download: none
 
 #----- download optimization begin --------------------#
- - job: Download_Optimization
+ - job: Download_Optimization_for_selfinjected_task
     displayName: Don't download automatically if no dependency
     pool:
       name: 'Default'
     steps:
       - download: none
 
- - job: Download_Optimization
-    displayName: Don't download automatically if no dependency
+ - job: No_Download_Optimization_for_user_task
+    displayName: Download and try to fail user task when there is no dependency
     pool:
       name: 'Default'
     steps:
        - download: current
-        artifact: Artifact1
+        artifact: Artifact1000
 #----- download optimization end --------------------#
 
 
