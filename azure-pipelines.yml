@@ -96,7 +96,7 @@ stages:
     pool:
       name: 'Default'
     steps:
-      - download: none
+      - script: echo test
 
   #- job: No_Download_Optimization_for_user_task
   #  displayName: Download and try to fail user task when there is no dependency
