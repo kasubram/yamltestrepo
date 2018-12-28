@@ -41,8 +41,7 @@ stages:
       - download: current
         artifact: Artifact1
         
-        
- - job: Download_none
+  - job: Download_none
     displayName: Don't download any artifact
     dependsOn: Job1
     pool:
