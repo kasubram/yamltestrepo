@@ -36,13 +36,12 @@ stages:
     dependsOn: Job1
     pool:
       name: 'Default'
-
     steps:
       - download: current
         artifact: Artifact1
         
   - job: Download_none
-    displayName: Don't download any artifact
+    displayName: Don't download any artifact using none
     dependsOn: Job1
     pool:
       name: 'Default'
@@ -66,9 +65,28 @@ stages:
          artifact: Artifact1000
 #----- download optimization end --------------------#
 
+#----- patterns begin --------------------#
+  - job: Download_pattern_literal
+    displayName: Download pattern literal 
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        patterns: '*.txt'
 
-        #patterns: ['**/*.cmd', '**/*.ps1']
-        #patterns: '**/*.cmd;**/*.ps1'
+  - job: Download_pattern_sequence
+    displayName: Download pattern sequence
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        patterns: ['**/*.cmd', '**/*.ps1']
+
+#----- patterns end --------------------#
 
       #- download: current
       #  artifact: Artifact2
