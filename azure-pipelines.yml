@@ -31,18 +31,16 @@ stages:
       - script: echo Will download all artifacts uploaded in Job1
   
   
-  - job: MyJob2
+  - job: Download_only_specific_artifact
+    displayName: Download only specific artifact
     dependsOn: Job1
-    timeoutInMinutes: 2
-    cancelTimeoutInMinutes: 2
-
     pool:
       name: 'Default'
 
     steps:
       - download: current
         artifact: Artifact1
-        patterns: ['**/*.cmd', '**/*.ps1']
+        #patterns: ['**/*.cmd', '**/*.ps1']
         #patterns: '**/*.cmd;**/*.ps1'
 
       #- download: current
@@ -51,11 +49,11 @@ stages:
         
       #- downloadArtifact:
       #  name: Artifact2
-      - task: PublishBuildArtifacts@1
-        displayName: Publish NewTestFolder
-        inputs:
-          pathToPublish: NewTestFolder
-          artifactName: NewTestFolder
+      #- task: PublishBuildArtifacts@1
+      #  displayName: Publish NewTestFolder
+      #  inputs:
+      #    pathToPublish: NewTestFolder
+      #    artifactName: NewTestFolder
           
       #- task: DownloadBuildArtifacts@0
       #  displayName: download artifact1
