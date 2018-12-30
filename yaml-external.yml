@@ -24,6 +24,6 @@ jobs:
     pool:
       name: 'Default'
     steps:
-      - download: none
-        #artifact: Artifact1-internal
+      - download: current
+        artifact: Artifact1-internal
 
