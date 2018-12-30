@@ -22,7 +22,7 @@ jobs:
     displayName: download specific artifact
     pool:
       name: 'Default'
-    #steps:
-    #  - download: MyPipeline
-    #    artifact: Artifact1
+    steps:
+      - download: MyPipeline
+        artifact: Artifact1
 
