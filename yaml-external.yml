@@ -27,5 +27,5 @@ jobs:
       - download: current
         artifact: Artifact1-internal
         root: $(pipeline.resourcesdirectory)\a\b
-      - download: current
-        artifact: Artifact1-internal
+      - download: MyPipeline
+        artifact: Artifact1
