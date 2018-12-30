@@ -25,5 +25,5 @@ jobs:
       name: 'Default'
     steps:
       - download: current
-        artifact: Artifact1-interna
+        artifact: Artifact1-internal
 
