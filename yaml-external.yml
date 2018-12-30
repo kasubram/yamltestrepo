@@ -19,6 +19,7 @@ jobs:
           artifactName: Artifact1-internal
 
   - job: download_specific_artifact
+    dependsOn: download_all_artifact
     displayName: download specific artifact
     pool:
       name: 'Default'
