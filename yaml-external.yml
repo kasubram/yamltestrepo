@@ -24,6 +24,6 @@ jobs:
     pool:
       name: 'Default'
     steps:
-      - download: MyPipeline
-        artifact: Artifact1
+      - download: current
+        artifact: Artifact1-interna
 
