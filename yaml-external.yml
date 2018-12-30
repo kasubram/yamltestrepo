@@ -26,4 +26,4 @@ jobs:
     steps:
       - download: current
         artifact: Artifact1-internal
-
+        root: $(pipeline.resourcesdirectory)\a\b
