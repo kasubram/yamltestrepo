@@ -87,6 +87,7 @@ stages:
     pool:
       name: 'Default'
     steps:
+      - script: echo $(System.DefaultWorkingDirectory)
       - download: current
         artifact: Artifact1
         root: "foo/bar"
