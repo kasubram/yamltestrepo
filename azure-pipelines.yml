@@ -104,9 +104,9 @@ stages:
     displayName: Download and try to fail user task when wrong info is given
     pool:
       name: 'Default'
-    steps:
-       - download: current
-         artifact: Artifact1000
+    #steps:
+       #- download: current
+       #  artifact: Artifact1000
 
 
 - stage: stage2
