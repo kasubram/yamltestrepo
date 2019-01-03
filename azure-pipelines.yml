@@ -80,7 +80,17 @@ stages:
       - download: current
         artifact: Artifact1
         root: "$(pipeline.resourcesdirectory)/hello/test"
-        
+
+  - job: Download_to_relative_custom_location
+    displayName: Download to relative custom location
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        root: "foo/bar"
+
   - job: Download_apply_common_setting
     displayName: Download apply commen setting for all artifact
     dependsOn: Job1
@@ -90,22 +100,13 @@ stages:
       - download: current
         patterns: ['**/*.cmd', '**/*.ps1']
 
-#----- download optimization begin --------------------#
-  - job: Download_Optimization_for_selfinjected_task
-    displayName: Don't download automatically if no dependency
-    pool:
-      name: 'Default'
-    steps:
-      - script: echo test
-
-  - job: No_Download_Optimization_for_user_task
-    displayName: Download and try to fail user task when there is no dependency
+  - job: Invalid_ArtifactName_provided
+    displayName: Download and try to fail user task when wrong info is given
     pool:
       name: 'Default'
     steps:
        - download: current
          artifact: Artifact1000
-#----- download optimization end --------------------#
 
 
 - stage: stage2
@@ -118,21 +119,3 @@ stages:
       steps:
         - script: echo I am stage2 Job
 
-- stage: stage3
-  jobs:
-    - job: MyJobFromStage3
-      displayName: don't download any artifacts from stage1 jobs as there is no dependency
-      pool:
-        name: 'Default'
-      steps:
-        - script: echo I am stage3 Job
-
-
-
-      #- downloadArtifact:
-      #  name: Artifact2
-      #- task: PublishBuildArtifacts@1
-      #  displayName: Publish NewTestFolder
-      #  inputs:
-      #    pathToPublish: NewTestFolder
-      #    artifactName: NewTestFolder
