@@ -67,7 +67,9 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
-        patterns: ['**/*.cmd', '**/*.ps1']
+        patterns: |
+          **/*.cmd
+          **/*.ps1
 
 #----- patterns end --------------------#
 
@@ -99,7 +101,9 @@ stages:
       name: 'Default'
     steps:
       - download: current
-        patterns: ['**/*.cmd', '**/*.ps1']
+        patterns: |
+          **/*.cmd
+          **/*.ps1
 
   - job: Invalid_ArtifactName_provided
     displayName: Download and try to fail user task when wrong info is given
