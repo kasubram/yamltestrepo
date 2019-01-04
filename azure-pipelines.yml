@@ -29,7 +29,7 @@ stages:
       name: 'Default'
     steps:
       - script: echo Will download all artifacts uploaded in Job1
-      - script: $(System.HostType)
+      - script: echo $(System.HostType)
   
   
   - job: Download_only_specific_artifact
