@@ -105,15 +105,6 @@ stages:
           **/*.cmd
           **/*.ps1
 
-  - job: Invalid_ArtifactName_provided
-    displayName: Download and try to fail user task when wrong info is given
-    pool:
-      name: 'Default'
-    #steps:
-       #- download: current
-       #  artifact: Artifact1000
-
-
 - stage: stage2
   dependsOn: stage1
   jobs:
@@ -123,4 +114,12 @@ stages:
         name: 'Default'
       steps:
         - script: echo I am stage2 Job
+
+    - job: Invalid_ArtifactName_provided
+      displayName: Download and try to fail user task when wrong info is given
+      pool:
+        name: 'Default'
+      steps:
+        - download: current
+          artifact: Artifact1000
 
