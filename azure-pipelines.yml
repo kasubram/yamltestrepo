@@ -29,7 +29,8 @@ stages:
       name: 'Default'
     steps:
       - script: echo Will download all artifacts uploaded in Job1
-      - powershell: gci env:
+      - powershell: |
+          gci env:
   
   
   - job: Download_only_specific_artifact
