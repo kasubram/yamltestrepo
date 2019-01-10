@@ -12,11 +12,11 @@ jobs:
       name: 'Default'
     steps:
       - script: echo download all artifact
+      - downloadBuild: MyJenkins
+        name: MyJob
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder-internal
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-internal
-      - downloadBuild: MyJenkins
-        name: MyJob
 
