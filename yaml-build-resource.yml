@@ -17,4 +17,6 @@ jobs:
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-internal
+      - downloadBuild: MyJenkins
+        name: MyJob
 
