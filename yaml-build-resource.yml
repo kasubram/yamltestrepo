@@ -1,6 +1,6 @@
 resources:
-  pipelines:
-  - pipeline: MyJenkins
+  builds:
+  - build: MyJenkins
     source: First
     version: 1
 
