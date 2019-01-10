@@ -1,7 +1,7 @@
 resources:
   builds:
   - build: MyJenkins
-    type: Jenkins
+    type: Build
     source: First
     version: 1
 
