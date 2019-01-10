@@ -13,7 +13,6 @@ jobs:
     steps:
       - script: echo download all artifact
       - downloadBuild: MyJenkins
-        name: MyJob
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder-internal
         inputs:
