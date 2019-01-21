@@ -3,7 +3,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
-    version: 28 #20190109.5
+    version: 20190109.5
 
 jobs:
   - job: download_all_artifact
