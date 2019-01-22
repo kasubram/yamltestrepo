@@ -4,7 +4,11 @@ resources:
     project: p1
     source: First
     version: 20190109.5
-
+  - pipeline: MyPipeline2
+    project: p1
+    source: First
+    version: 20190109.6
+    
 jobs:
   - job: download_all_artifact
     displayName: download all artifact
