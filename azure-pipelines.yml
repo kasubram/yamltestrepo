@@ -2,7 +2,7 @@ stages:
 - stage: stage1
   jobs:
   - job: Job1
-    timeoutInMinutes: 2
+    timeoutInMinutes: 3
     cancelTimeoutInMinutes: 2
 
     pool:
