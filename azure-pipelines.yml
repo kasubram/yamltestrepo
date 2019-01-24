@@ -83,7 +83,7 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
-        root: "$(pipeline.resourcesdirectory)/hello/test"
+        root: "$(system.artifactsDirectory)/hello/test"
 
   - job: Download_to_relative_custom_location
     displayName: Download to relative custom location
