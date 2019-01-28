@@ -9,6 +9,10 @@ stages:
       name: 'Default'
     steps:
       - task: PublishPipelineArtifact@2
+        displayName: Upload Vsix File
+        inputs:
+          artifactName: Extension
+          targetPath: Extension/*.vsix
 
   - job: Download_all_by_default
     displayName: Download all artifacts by default
