@@ -18,7 +18,7 @@ stages:
       - task: PublishPipelineArtifact@2
         displayName: Upload extension zip
         inputs: 
-          pathToPublish: Extension/zip/**
+          targetPath: Extension/zip/**
           artifactName: ExtensionZip
   
   
