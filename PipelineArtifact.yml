@@ -7,6 +7,11 @@ stages:
 
     pool:
       name: 'Default'
+    steps:
+      - task: PublishPipelineArtifact@2
+      inputs:
+        artifactName: Extension
+        targetPath: Extension/*.vsix
 
   - job: Download_all_by_default
     displayName: Download all artifacts by default
