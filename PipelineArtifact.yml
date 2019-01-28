@@ -38,10 +38,10 @@ stages:
       name: 'Default'
     steps:
       - powershell: |
-        1..$count | % {
-          Start-Sleep -s 1
-          Write-Host "Waiting TimeDelay $_"
-        }
+          1..$count | % {
+            Start-Sleep -s 1
+            Write-Host "Waiting TimeDelay $_"
+          }
 
       - download: current
         artifact: Extension
