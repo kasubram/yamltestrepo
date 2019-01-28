@@ -16,7 +16,6 @@ stages:
         inputs:
           artifactName: Extension
           targetPath: Extension/vsix
-          #test
           
       - task: PublishPipelineArtifact@0
         displayName: Upload Vsix Zip File
