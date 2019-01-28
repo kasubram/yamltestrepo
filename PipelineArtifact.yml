@@ -20,8 +20,7 @@ stages:
         inputs: 
           targetPath: Extension/zip/**
           artifactName: ExtensionZip
-  
-  
+   
   - job: Download_all_by_default
     displayName: Download all artifacts by default
     dependsOn: Job1
