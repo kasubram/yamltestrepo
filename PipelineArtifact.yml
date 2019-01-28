@@ -8,7 +8,7 @@ stages:
     pool:
       name: 'Default'
     steps:
-      - task: PublishPipelineArtifact@2
+      - task: PublishPipelineArtifact@0
         displayName: Upload Vsix File
         inputs:
           artifactName: Extension
