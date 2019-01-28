@@ -12,7 +12,13 @@ stages:
         displayName: Upload Vsix File
         inputs:
           artifactName: Extension
-          targetPath: Extension/*.vsix
+          targetPath: Extension/FabrikamTest.vss-services-externaltfs-15.106.1.vsix
+
+      - task: PublishPipelineArtifact@0
+        displayName: Upload Vsix Zip File
+        inputs:
+          artifactName: ExtensionZip
+          targetPath: Extension/Zip
 
   - job: Download_all_by_default
     displayName: Download all artifacts by default
