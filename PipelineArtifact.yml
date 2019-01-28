@@ -8,19 +8,6 @@ stages:
     pool:
       name: 'Default'
 
-    steps:
-      - task: PublishPipelineArtifact@2
-        displayName: Upload Vsix File
-        inputs:
-          artifactName: Extension
-          targetPath: Extension/*.vsix
-
-      - task: PublishPipelineArtifact@2
-        displayName: Upload extension zip
-        inputs: 
-          targetPath: Extension/zip/**
-          artifactName: ExtensionZip
-   
   - job: Download_all_by_default
     displayName: Download all artifacts by default
     dependsOn: Job1
