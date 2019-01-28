@@ -1,0 +1,41 @@
+stages:
+- stage: stage1
+  jobs:
+  - job: Job1
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+
+    pool:
+      name: 'Default'
+
+    steps:
+      - task: PublishPipelineArtifact@2
+        displayName: Upload Vsix File
+        inputs:
+          artifactName: Extension
+          targetPath: Extension/*.vsix
+
+      - task: PublishPipelineArtifact@2
+        displayName: Upload extension zip
+        inputs: 
+          pathToPublish: Extension/zip/**
+          artifactName: ExtensionZip
+  
+  
+  - job: Download_all_by_default
+    displayName: Download all artifacts by default
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - script: echo Will download all artifacts uploaded in Job1
+  
+  - job: Download_only_specific_artifact
+    displayName: Download only specific artifact
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Extension
+        
