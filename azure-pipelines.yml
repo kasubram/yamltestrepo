@@ -50,7 +50,7 @@ stages:
         artifact: Artifact1
       - download: current
         artifact: AzCopy
-        patterns: *.exe
+        patterns: '**/*.txt'
         
   - job: Download_none
     displayName: Don't download any artifact using none
