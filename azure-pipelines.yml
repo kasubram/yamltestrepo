@@ -21,6 +21,13 @@ stages:
           pathToPublish: azure-pipelines.yml
           artifactName: Artifact2
   
+      - task: PublishBuildArtifacts@1
+        displayName: Publish AzCopy Files
+        inputs:
+          pathToPublish: Files/azcopyFiles
+          artifactName: AzCopy
+          artifactType: filePath
+          targetPath: \\kalyan-dev\share\agentartifactfolder
   
   - job: Download_all_by_default
     displayName: Download all artifacts by default
