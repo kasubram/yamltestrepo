@@ -50,6 +50,7 @@ stages:
         artifact: Artifact1
       - download: current
         artifact: AzCopy
+        patterns: *.exe
         
   - job: Download_none
     displayName: Don't download any artifact using none
