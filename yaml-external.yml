@@ -3,7 +3,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
-    version: 20190128.16
+    version: 20190129.4
   - pipeline: MyPipeline2
     project: p1
     source: First
@@ -30,6 +30,6 @@ jobs:
     steps:
       - download: current
         artifact: Artifact1-internal
-        root: $(pipeline.resourcesdirectory)\a\b
+        root: $(system.artifactsDirectory)\a\b
       - download: MyPipeline
         artifact: Artifact1
