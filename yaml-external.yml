@@ -3,10 +3,10 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
-    version: 20190207.26
-  - pipeline: MyPipeline2
-    project: p1
-    source: First
+ #   version: 20190207.26
+ # - pipeline: MyPipeline2
+ #   project: p1
+ #   source: First
     #version: 20190109.6
     
 jobs:
