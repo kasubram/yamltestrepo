@@ -3,7 +3,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
-    version: 20190129.4
+    version: 20190207.26
   - pipeline: MyPipeline2
     project: p1
     source: First
