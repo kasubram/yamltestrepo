@@ -34,7 +34,7 @@ jobs:
       - download: MyPipeline
         artifact: Artifact1
   - job: download_all_artifact
-    dependsOn: download_all_artifact
+    dependsOn: download_external_artifact
     displayName: download all artifact
     pool:
       name: 'Default'
