@@ -23,7 +23,7 @@ jobs:
           artifactName: Artifact1-internal
 
   - job: download_specific_artifact
-    dependsOn: download_specific_artifact
+    dependsOn: download_external_artifact
     displayName: download specific artifact
     pool:
       name: 'Default'
