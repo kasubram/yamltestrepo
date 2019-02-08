@@ -10,12 +10,12 @@ resources:
    #version: 20190109.6
     
 jobs:
-  - job: download_all_artifact
+  - job: download_external_artifact
     displayName: download all artifact
     pool:
       name: 'Default'
     steps:
-      - script: echo download all artifact
+      - script: echo download all external artifact
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder-internal
         inputs:
@@ -23,7 +23,7 @@ jobs:
           artifactName: Artifact1-internal
 
   - job: download_specific_artifact
-    dependsOn: download_all_artifact
+    dependsOn: download_specific_artifact
     displayName: download specific artifact
     pool:
       name: 'Default'
@@ -33,3 +33,8 @@ jobs:
         root: $(system.artifactsDirectory)\a\b
       - download: MyPipeline
         artifact: Artifact1
+ - job: download_all_artifact
+    dependsOn: download_all_artifact
+    displayName: download all artifact
+    pool:
+      name: 'Default'
