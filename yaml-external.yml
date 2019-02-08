@@ -33,7 +33,7 @@ jobs:
         root: $(system.artifactsDirectory)\a\b
       - download: MyPipeline
         artifact: Artifact1
- - job: download_all_artifact
+  - job: download_all_artifact
     dependsOn: download_all_artifact
     displayName: download all artifact
     pool:
