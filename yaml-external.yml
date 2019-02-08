@@ -3,33 +3,33 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: First
- #   version: 20190207.26
- # - pipeline: MyPipeline2
- #   project: p1
- #   source: First
-    #version: 20190109.6
+   version: 20190207.26
+ - pipeline: MyPipeline2
+   project: p1
+   source: First
+   #version: 20190109.6
     
 jobs:
   - job: download_all_artifact
     displayName: download all artifact
     pool:
       name: 'Default'
-    # steps:
-    #   - script: echo download all artifact
-    #   - task: PublishBuildArtifacts@1
-    #     displayName: Publish TestFolder-internal
-    #     inputs:
-    #       pathToPublish: testFolder
-    #       artifactName: Artifact1-internal
+    steps:
+      - script: echo download all artifact
+      - task: PublishBuildArtifacts@1
+        displayName: Publish TestFolder-internal
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1-internal
 
-  # - job: download_specific_artifact
-  #   dependsOn: download_all_artifact
-  #   displayName: download specific artifact
-  #   pool:
-  #     name: 'Default'
-  #   steps:
-  #     - download: current
-  #       artifact: Artifact1-internal
-  #       root: $(system.artifactsDirectory)\a\b
-  #     - download: MyPipeline
-  #       artifact: Artifact1
+  - job: download_specific_artifact
+    dependsOn: download_all_artifact
+    displayName: download specific artifact
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1-internal
+        root: $(system.artifactsDirectory)\a\b
+      - download: MyPipeline
+        artifact: Artifact1
