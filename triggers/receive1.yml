@@ -1,0 +1,18 @@
+resources:
+  pipelines:
+  - pipeline: MyPipeline
+    project: p1
+    source: source-pipeline
+
+stages:
+- stage: stage1
+  jobs:
+  - job: Job1
+    timeoutInMinutes: 2
+    cancelTimeoutInMinutes: 2
+
+    pool:
+      name: 'Default'
+
+    steps:
+      - powershell: Write-Host "HelloWorld"
