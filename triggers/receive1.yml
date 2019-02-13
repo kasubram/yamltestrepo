@@ -3,6 +3,9 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: source-pipeline
+    trigger:
+      branches:
+        - master
 
 stages:
 - stage: stage1
