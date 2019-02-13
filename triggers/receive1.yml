@@ -5,7 +5,7 @@ resources:
     source: source-pipeline
     trigger:
       branches:
-        - master
+      - master
 
 stages:
 - stage: stage1
