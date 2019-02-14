@@ -28,5 +28,4 @@ stages:
           artifactName: AzCopy
           artifactType: filePath
           targetPath: \\kalyan-dev\share\agentartifactfolder
-  #test
   
