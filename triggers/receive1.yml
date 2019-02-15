@@ -1,14 +1,14 @@
-resources:
-  pipelines:
-  - pipeline: MyPipeline
-    project: p1
-    source: source-pipeline
-    trigger:
-      branches:
-        include:
-        - master
-        exclude:
-        - release
+# resources:
+#   pipelines:
+#   - pipeline: MyPipeline
+#     project: p1
+#     source: source-pipeline
+#     trigger:
+#       branches:
+#         include:
+#         - master
+#         exclude:
+#         - release
 
 stages:
 - stage: stage1
@@ -23,6 +23,3 @@ stages:
     steps:
       - powershell: Write-Host "HelloWorld"
 
-#test1
-#test2
-#test3
