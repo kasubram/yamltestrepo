@@ -9,6 +9,15 @@ resources:
         - master
         exclude:
         - release
+  - pipeline: MyPipeline2
+    project: p1
+    source: source-pipeline
+    trigger:
+      branches:
+        - release
+      tags:
+        - test1
+        - test2
 
 stages:
 - stage: stage1
@@ -30,4 +39,3 @@ stages:
 #test5
 #test6
 #test7
-#test8
