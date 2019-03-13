@@ -127,7 +127,7 @@ stages:
       steps:
         - script: echo I am stage2 Job
 
-    - job: DownloadTaskWithCustomFields-disabled
+    - job: DownloadTaskWithCustomFields_disabled
       displayName: download task with custome fields - disabled
       pool: 'Default'
       steps:
