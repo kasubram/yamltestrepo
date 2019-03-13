@@ -93,7 +93,7 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
-        root: "$(system.artifactsDirectory)/hello/test"
+        path: "$(system.artifactsDirectory)/hello/test"
 
   - job: Download_to_relative_custom_location
     displayName: Download to relative custom location
@@ -104,7 +104,7 @@ stages:
       - script: echo $(System.DefaultWorkingDirectory)
       - download: current
         artifact: Artifact1
-        root: "foo/bar"
+        path: "foo/bar"
 
   - job: Download_apply_common_setting
     displayName: Download apply commen setting for all artifact

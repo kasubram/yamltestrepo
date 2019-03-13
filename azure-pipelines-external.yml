@@ -30,7 +30,7 @@ jobs:
     steps:
       - download: current
         artifact: Artifact1-internal
-        root: $(system.artifactsDirectory)\a\b
+        path: $(system.artifactsDirectory)\a\b
       - download: MyPipeline
         artifact: Artifact1
   - job: download_all_artifact
