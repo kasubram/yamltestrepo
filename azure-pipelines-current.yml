@@ -127,6 +127,13 @@ stages:
       steps:
         - script: echo I am stage2 Job
 
+    - job: DownloadTaskWithCustomFields-disabled
+      displayName: download task with custome fields - disabled
+      pool: 'Default'
+      steps:
+        - download: current
+          artifact: Artifact1
+          enabled: false
     #- job: Invalid_ArtifactName_provided
     #  displayName: Download and try to fail user task when wrong info is given
     #  pool:
