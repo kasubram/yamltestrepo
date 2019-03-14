@@ -13,12 +13,18 @@ jobs:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
     enabled: false
+
   - task: PublishPipelineArtifact@0
     displayName: Upload Vsix File
     inputs:
       artifactName: Extension
       targetPath: Extension/vsix
-
+  
+  - task: PublishPipelineArtifact@0
+    displayName: Upload Vsix Zip File
+    inputs:
+      artifactName: ExtensionZip
+      targetPath: Extension/Zip     
   # - task: PublishBuildArtifacts@1
   #   displayName: Publish TestFolder
   #   inputs:
@@ -29,12 +35,7 @@ jobs:
   #   inputs: 
   #     pathToPublish: azure-pipelines.yml
   #     artifactName: Artifact2
-  
-  # - task: PublishPipelineArtifact@1
-  #   displayName: Upload Vsix Zip File
-  #   inputs:
-  #     artifactName: ExtensionZip
-  #     targetPath: Extension/Zip     
+
 
 - job: job2
   pool: 'Default'
