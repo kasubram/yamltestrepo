@@ -55,5 +55,5 @@ jobs:
 
   - download: current
     artifact: Artifact1
-    name: MyArtifact1
+    name: MyArtifact2
     displayName: Download -- Artifact1        
