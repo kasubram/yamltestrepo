@@ -21,7 +21,10 @@ jobs:
         inputs:
           pathToPublish: testFolder
           artifactName: Artifact1-internal
-
+      - download: MyPipeline2
+        artifact: ExtensionZip    
+      - download: MyPipeline
+        artifact: ExtensionZip    
   - job: download_specific_artifact
     dependsOn: download_external_artifact
     displayName: download specific artifact
