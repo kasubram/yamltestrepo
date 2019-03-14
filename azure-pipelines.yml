@@ -51,7 +51,7 @@ jobs:
 
   - download: current
     artifact: ExtensionZip    
-    patterns: '**/*.md'
+    pattern: '**/*.md'
   # - download: current
   #   artifact: Artifact1
   #   name: MyArtifact1
