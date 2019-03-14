@@ -28,8 +28,9 @@ steps:
 - download: current
   artifact: Artifact1
   enabled: false
+
 - download: current
   artifact: Artifact1
-  name: MyArtifact1
-  displayName: download-myartifact1
+  #name: MyArtifact1
+  #displayName: download-myartifact1
 #test
