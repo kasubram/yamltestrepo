@@ -60,7 +60,7 @@ jobs:
 
   - download: current
     artifact: Artifact1000
-    continueOnError: true
+    #continueOnError: true
 
   - download: current
     artifact: Artifact1
