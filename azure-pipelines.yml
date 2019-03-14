@@ -50,10 +50,10 @@ jobs:
 
   - download: current
     artifact: Artifact1
-    name: MyArtifact1
+    name: MyArtifact2
     displayName: Download -- Artifact1        
 
   - download: current
     artifact: Artifact1
-    name: MyArtifact2
+    name: MyArtifact3
     displayName: Download -- Artifact1        
