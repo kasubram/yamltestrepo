@@ -48,7 +48,6 @@ jobs:
 
   # - download: current
   #   artifact: Extension
-
   - download: current
     artifact: ExtensionZip 
     patterns: '**/*.md'
