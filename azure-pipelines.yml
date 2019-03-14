@@ -82,7 +82,5 @@ jobs:
   pool: 'Default'
   dependsOn: Job1
 
-  steps:
-  - download: current
-    artifact: Extension
+
 
