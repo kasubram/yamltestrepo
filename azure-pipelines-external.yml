@@ -2,11 +2,11 @@ resources:
   pipelines:
   - pipeline: MyPipeline
     project: p1
-    source: First
-    version: 20190207.26
+    source: MyFirstProject
+    version: 20190314.4
   - pipeline: MyPipeline2
     project: p1
-    source: First
+    source: MyFirstProject
    #version: 20190109.6
     
 jobs:
@@ -30,11 +30,10 @@ jobs:
     steps:
       - download: current
         artifact: Artifact1-internal
-        path: $(system.artifactsDirectory)\a\b
       - download: MyPipeline
         artifact: Artifact1
+        
   - job: download_all_artifact
     dependsOn: download_external_artifact
     displayName: download all artifact
-    pool:
-      name: 'Default'
+    pool: 'Default'
