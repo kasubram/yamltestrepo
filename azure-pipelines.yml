@@ -5,10 +5,9 @@
 
 # trigger:
 # - master
-
-pool:
-  name: 'Default'
 - job: Job1
+  pool: 'Default'
+
   steps:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
@@ -26,6 +25,7 @@ pool:
       artifactName: Artifact2
 
 - job: job2
+  pool: 'Default'
   dependsOn: job1
   - download: current
     artifact: Artifact1
