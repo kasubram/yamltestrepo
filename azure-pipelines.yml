@@ -19,6 +19,11 @@ steps:
   inputs:
     pathToPublish: testFolder
     artifactName: Artifact1
+- task: PublishBuildArtifacts@1
+  displayName: Publish yml
+  inputs: 
+    pathToPublish: azure-pipelines.yml
+    artifactName: Artifact2
 
 - download: current
   artifact: Artifact1
