@@ -27,7 +27,9 @@ jobs:
 
 - job: job2
   pool: 'Default'
-  dependsOn: job1
+  dependsOn: Job1
+
+  steps:
   - download: current
     artifact: Artifact1
     enabled: false
