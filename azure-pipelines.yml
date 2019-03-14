@@ -35,7 +35,7 @@ jobs:
   #   enabled: false
 
   - download: current
-    path: $(Pipeline.Workspace)/test
+    path: test2
 
   # - download: current
   #   artifact: Artifact1
