@@ -30,15 +30,15 @@ jobs:
   dependsOn: Job1
 
   steps:
-  - download: current
-    artifact: Artifact1
-    enabled: false
-
   # - download: current
   #   artifact: Artifact1
+  #   enabled: false
+
+  - download: current
+    artifact: Artifact1
  
-  # - download: current
-  #   artifact: Artifact2
+  - download: current
+    artifact: Artifact2
 
   # - download: current
   #   artifact: Artifact1
