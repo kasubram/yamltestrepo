@@ -38,7 +38,7 @@ jobs:
     artifact: Artifact1
  
   - download: current
-    artifact: Artifact2
+    artifact: Artifact1
 
   # - download: current
   #   artifact: Artifact1
