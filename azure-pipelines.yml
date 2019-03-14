@@ -50,8 +50,8 @@ jobs:
   #   artifact: Extension
 
   - download: current
-    artifact: ExtensionZip    
-    pattern: '**/*.md'
+    artifact: ExtensionZip 
+    patterns: '**/*.md'
   # - download: current
   #   artifact: Artifact1
   #   name: MyArtifact1
