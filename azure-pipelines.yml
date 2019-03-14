@@ -36,9 +36,7 @@ jobs:
 
   - download: current
     artifact: Artifact1
- 
-  - download: current
-    artifact: Artifact1
+    path: $(Pipeline.Workspace)/test
 
   # - download: current
   #   artifact: Artifact1
@@ -67,6 +65,3 @@ jobs:
   #   env:
   #     x: y  
 
-- job: job3
-  pool: 'Default'
-  dependsOn: Job1
