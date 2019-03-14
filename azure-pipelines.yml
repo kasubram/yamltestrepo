@@ -47,8 +47,10 @@ jobs:
   #   enabled: false
 
   - download: current
-    path: test2
+    artifact: Extension
 
+  - download: current
+    artifact: Extension    
   # - download: current
   #   artifact: Artifact1
   #   name: MyArtifact1
