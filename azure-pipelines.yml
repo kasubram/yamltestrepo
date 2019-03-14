@@ -5,6 +5,7 @@
 
 # trigger:
 # - master
+jobs:
 - job: Job1
   pool: 'Default'
 
