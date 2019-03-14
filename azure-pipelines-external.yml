@@ -1,11 +1,11 @@
 resources:
   pipelines:
   - pipeline: MyPipeline
-    project: p1
+    project: MyFirstProject
     source: MyFirstProject
     version: 20190314.4
   - pipeline: MyPipeline2
-    project: p1
+    project: MyFirstProject
     source: MyFirstProject
    #version: 20190109.6
     
@@ -32,7 +32,7 @@ jobs:
         artifact: Artifact1-internal
       - download: MyPipeline
         artifact: Artifact1
-        
+
   - job: download_all_artifact
     dependsOn: download_external_artifact
     displayName: download all artifact
