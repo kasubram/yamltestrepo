@@ -57,3 +57,12 @@ jobs:
     artifact: Artifact1
     name: MyArtifact3
     displayName: Download -- Artifact1        
+
+  - download: current
+    artifact: Artifact1000
+    continueOnError: true
+
+  - download: current
+    artifact: Artifact1
+    env:
+      x: y  
