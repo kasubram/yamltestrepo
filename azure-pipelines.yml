@@ -36,6 +36,10 @@ jobs:
 
   - download: current
     artifact: Artifact1
+
+  - download: current
+    artifact: Artifact2
+
     #name: MyArtifact1
     #displayName: download-myartifact1
 #test
