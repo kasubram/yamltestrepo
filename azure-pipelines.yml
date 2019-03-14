@@ -24,12 +24,12 @@ jobs:
   #   inputs: 
   #     pathToPublish: azure-pipelines.yml
   #     artifactName: Artifact2
-    - task: PublishPipelineArtifact@0
-      displayName: Upload Vsix File
-      inputs:
-        artifactName: Extension
-        targetPath: Extension/vsix
-    
+  - task: PublishPipelineArtifact@0
+    displayName: Upload Vsix File
+    inputs:
+      artifactName: Extension
+      targetPath: Extension/vsix
+  
     - task: PublishPipelineArtifact@0
       displayName: Upload Vsix Zip File
       inputs:
