@@ -13,7 +13,7 @@ jobs:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
     enabled: false
-  - task: PublishPipelineArtifact@1
+  - task: PublishPipelineArtifact@0
     displayName: Upload Vsix File
     inputs:
       artifactName: Extension
