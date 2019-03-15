@@ -84,9 +84,3 @@ jobs:
 #     env:
 #       x: y  
 
-- job: job3
-  pool: 'Default'
-  dependsOn: Job1
-
-
-
