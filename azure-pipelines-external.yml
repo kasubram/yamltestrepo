@@ -1,9 +1,9 @@
 resources:
   pipelines:
-  - pipeline: MyPipeline
-    project: MyFirstProject
-    source: MyFirstProject
-    version: 20190314.4
+  # - pipeline: MyPipeline
+  #   project: MyFirstProject
+  #   source: MyFirstProject
+  #   version: 20190314.4
   - pipeline: MyPipeline2
     project: MyFirstProject
     source: MyFirstProject
@@ -16,28 +16,28 @@ jobs:
       name: 'Default'
     steps:
       - script: echo download all external artifact
-      - task: PublishBuildArtifacts@1
-        displayName: Publish TestFolder-internal
-        inputs:
-          pathToPublish: testFolder
-          artifactName: Artifact1-internal
-      - download: MyPipeline2
-        artifact: ExtensionZip    
-      - download: MyPipeline
-        artifact: ExtensionZip   
-        continueOnError: true 
-  - job: download_specific_artifact
-    dependsOn: download_external_artifact
-    displayName: download specific artifact
-    pool:
-      name: 'Default'
-    steps:
-      - download: current
-        artifact: Artifact1-internal
-      - download: MyPipeline
-        artifact: Artifact1
+  #     - task: PublishBuildArtifacts@1
+  #       displayName: Publish TestFolder-internal
+  #       inputs:
+  #         pathToPublish: testFolder
+  #         artifactName: Artifact1-internal
+  #     - download: MyPipeline2
+  #       artifact: ExtensionZip    
+  #     - download: MyPipeline
+  #       artifact: ExtensionZip   
+  #       continueOnError: true 
+  # - job: download_specific_artifact
+  #   dependsOn: download_external_artifact
+  #   displayName: download specific artifact
+  #   pool:
+  #     name: 'Default'
+  #   steps:
+  #     - download: current
+  #       artifact: Artifact1-internal
+  #     - download: MyPipeline
+  #       artifact: Artifact1
 
-  - job: download_all_artifact
-    dependsOn: download_external_artifact
-    displayName: download all artifact
-    pool: 'Default'
+  # - job: download_all_artifact
+  #   dependsOn: download_external_artifact
+  #   displayName: download all artifact
+  #   pool: 'Default'
