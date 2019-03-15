@@ -25,60 +25,64 @@ jobs:
     inputs:
       artifactName: ExtensionZip
       targetPath: Extension/Zip     
-  - task: PublishBuildArtifacts@1
-    displayName: Publish TestFolder
-    inputs:
-      pathToPublish: testFolder
-      artifactName: Artifact1
-  - task: PublishBuildArtifacts@1
-    displayName: Publish yml
-    inputs: 
-      pathToPublish: azure-pipelines.yml
-      artifactName: Artifact2
+  # - task: PublishBuildArtifacts@1
+  #   displayName: Publish TestFolder
+  #   inputs:
+  #     pathToPublish: testFolder
+  #     artifactName: Artifact1
+  # - task: PublishBuildArtifacts@1
+  #   displayName: Publish yml
+  #   inputs: 
+  #     pathToPublish: azure-pipelines.yml
+  #     artifactName: Artifact2
 
-
-- job: job2
+- job: job3
   pool: 'Default'
   dependsOn: Job1
 
-  steps:
-  - download: current
-    artifact: Artifact1
-    enabled: false
 
-  # - download: current
-  #   artifact: Extension
+# - job: job2
+#   pool: 'Default'
+#   dependsOn: Job1
 
-  - download: current
-    artifact: ExtensionZip
-    path: hello    
+#   steps:
+#   - download: current
+#     artifact: Artifact1
+#     enabled: false
 
-  - download: current
-    artifact: Artifact1
-    path: hello2
+#   # - download: current
+#   #   artifact: Extension
 
-  - download: current
-    artifact: Artifact1
-    displayName: Download -- Artifact1    
+#   - download: current
+#     artifact: ExtensionZip
+#     path: hello    
 
-  - download: current
-    artifact: Artifact1
-    name: MyArtifact2
-    displayName: Download -- Artifact2     
+#   - download: current
+#     artifact: Artifact1
+#     path: hello2
 
-  - download: current
-    artifact: Artifact1
-    name: MyArtifact3
-    displayName: Download -- Artifact1        
+#   - download: current
+#     artifact: Artifact1
+#     displayName: Download -- Artifact1    
 
-  - download: current
-    artifact: Artifact1000
-    continueOnError: true
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact2
+#     displayName: Download -- Artifact2     
 
-  - download: current
-    artifact: Artifact1
-    env:
-      x: y  
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact3
+#     displayName: Download -- Artifact1        
+
+#   - download: current
+#     artifact: Artifact1000
+#     continueOnError: true
+
+#   - download: current
+#     artifact: Artifact1
+#     env:
+#       x: y  
 
 - job: job3
   pool: 'Default'
