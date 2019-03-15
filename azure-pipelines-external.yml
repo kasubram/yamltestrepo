@@ -1,13 +1,8 @@
 resources:
   pipelines:
-  # - pipeline: MyPipeline
-  #   project: MyFirstProject
-  #   source: MyFirstProject
-  #   version: 20190314.4
   - pipeline: MyPipeline2
     project: MyFirstProject
     source: MyFirstProject
-   #version: 20190109.6
     
 jobs:
   - job: download_external_artifact
