@@ -24,7 +24,8 @@ jobs:
       - download: MyPipeline2
         artifact: ExtensionZip    
       - download: MyPipeline
-        artifact: ExtensionZip    
+        artifact: ExtensionZip   
+        continueOnError: true 
   - job: download_specific_artifact
     dependsOn: download_external_artifact
     displayName: download specific artifact
