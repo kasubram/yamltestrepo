@@ -50,7 +50,8 @@ jobs:
   #   artifact: Extension
 
   - download: current
-    artifact: ExtensionZip    
+    artifact: ExtensionZip
+    path: hello    
 
   - download: current
     artifact: Artifact1
