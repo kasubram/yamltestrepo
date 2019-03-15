@@ -55,7 +55,7 @@ jobs:
 
   - download: current
     artifact: Artifact1
-    name: MyArtifact1
+    path: hello2
 
   - download: current
     artifact: Artifact1
