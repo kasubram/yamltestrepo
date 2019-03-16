@@ -1,0 +1,86 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# trigger:
+# - master
+jobs:
+- job: Job1
+  pool: 'Default'
+
+  steps:
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
+    enabled: false
+
+  - task: PublishPipelineArtifact@0
+    displayName: Upload Vsix File
+    inputs:
+      artifactName: Extension
+      targetPath: Extension/vsix
+  
+  - task: PublishPipelineArtifact@0
+    displayName: Upload Vsix Zip File
+    inputs:
+      artifactName: ExtensionZip
+      targetPath: Extension/Zip     
+  # - task: PublishBuildArtifacts@1
+  #   displayName: Publish TestFolder
+  #   inputs:
+  #     pathToPublish: testFolder
+  #     artifactName: Artifact1
+  # - task: PublishBuildArtifacts@1
+  #   displayName: Publish yml
+  #   inputs: 
+  #     pathToPublish: azure-pipelines.yml
+  #     artifactName: Artifact2
+
+- job: job3
+  pool: 'Default'
+  dependsOn: Job1
+
+
+# - job: job2
+#   pool: 'Default'
+#   dependsOn: Job1
+
+#   steps:
+#   - download: current
+#     artifact: Artifact1
+#     enabled: false
+
+#   # - download: current
+#   #   artifact: Extension
+
+#   - download: current
+#     artifact: ExtensionZip
+#     path: hello    
+
+#   - download: current
+#     artifact: Artifact1
+#     path: hello2
+
+#   - download: current
+#     artifact: Artifact1
+#     displayName: Download -- Artifact1    
+
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact2
+#     displayName: Download -- Artifact2     
+
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact3
+#     displayName: Download -- Artifact1        
+
+#   - download: current
+#     artifact: Artifact1000
+#     continueOnError: true
+
+#   - download: current
+#     artifact: Artifact1
+#     env:
+#       x: y  
+
