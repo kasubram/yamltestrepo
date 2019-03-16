@@ -1,9 +1,10 @@
 resources:
   builds:
   - build: MyJenkins
-    type: Build
-    source: First
-    version: 1
+    type: Jenkins
+    connection: rmcdp
+    source: FreeStyleProject
+    version: 47
 
 jobs:
   - job: job1
