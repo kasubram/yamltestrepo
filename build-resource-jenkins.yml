@@ -1,0 +1,16 @@
+resources:
+  builds:
+  - build: MyJenkins
+    type: Build
+    source: First
+    version: 1
+
+jobs:
+  - job: job1
+    pool: 'Default'
+    steps:
+      - script: echo download all artifact
+      #- downloadBuild: MyJenkins
+      #  name: MyJob
+
+
