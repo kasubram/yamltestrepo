@@ -7,7 +7,7 @@ resources:
   builds:
   - build: MyJenkins
     type: Jenkins
-    connection: rmcdp
+    endpoint: rmcdp
     source: FreeStyleProject
     version: 47
 
