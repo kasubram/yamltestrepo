@@ -1,4 +1,9 @@
 resources:
+  pipelines:
+  - pipeline: MyPipeline2
+    project: MyFirstProject
+    source: MyFirstProject
+
   builds:
   - build: MyJenkins
     type: Jenkins
