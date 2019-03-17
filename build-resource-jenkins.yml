@@ -4,7 +4,7 @@ resources:
     type: Jenkins
     connection: rmcdp
     source: FreeStyleProject
-    version: 47
+    version: 45
 
 jobs:
   - job: job1
