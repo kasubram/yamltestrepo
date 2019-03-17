@@ -5,12 +5,15 @@ resources:
     connection: rmcdp
     source: FreeStyleProject
     version: 45
+  - build: MyJenkins2
+    type: Jenkins
+    connection: rmcdp
+    source: FreeStyleProject
 
 jobs:
   - job: job1
     pool: 'Default'
     steps:
       - script: echo download all artifact
-      - downloadBuild: MyJenkins
 
 
