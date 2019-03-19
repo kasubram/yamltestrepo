@@ -44,7 +44,7 @@ jobs:
   - download: current
     artifact: Extension
   - download: current
-    artifact: Artifact1
+    artifact: ExtensionZip
     enabled: false
 
 
