@@ -1,6 +1,6 @@
 resources:
   pipelines:
-  - pipeline: MyPipeline2
+  - pipeline: 
     project: MyFirstProject
     source: MyFirstProject
 
