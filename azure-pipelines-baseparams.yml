@@ -41,17 +41,17 @@ jobs:
   dependsOn: Job1
 
 
-# - job: job2
-#   pool: 'Default'
-#   dependsOn: Job1
+- job: job2
+  pool: 'Default'
+  dependsOn: Job1
 
 #   steps:
 #   - download: current
 #     artifact: Artifact1
 #     enabled: false
 
-#   # - download: current
-#   #   artifact: Extension
+  - download: current
+    artifact: Extension
 
 #   - download: current
 #     artifact: ExtensionZip
