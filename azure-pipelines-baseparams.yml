@@ -42,11 +42,11 @@ jobs:
 
   steps:
   - download: current
+    artifact: Extension
+  - download: current
     artifact: Artifact1
     enabled: false
 
-  - download: current
-    artifact: Extension
 
 #   - download: current
 #     artifact: ExtensionZip
