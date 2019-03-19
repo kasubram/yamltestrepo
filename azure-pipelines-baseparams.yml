@@ -36,19 +36,14 @@ jobs:
   #     pathToPublish: azure-pipelines.yml
   #     artifactName: Artifact2
 
-- job: job3
-  pool: 'Default'
-  dependsOn: Job1
-
-
 - job: job2
   pool: 'Default'
   dependsOn: Job1
 
   steps:
-#   - download: current
-#     artifact: Artifact1
-#     enabled: false
+  - download: current
+    artifact: Artifact1
+    enabled: false
 
   - download: current
     artifact: Extension
