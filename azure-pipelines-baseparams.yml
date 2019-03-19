@@ -35,45 +35,45 @@ jobs:
       pathToPublish: azure-pipelines.yml
       artifactName: Artifact2
 
-- job: job2
-  pool: 'Default'
-  dependsOn: Job1
+# - job: job2
+#   pool: 'Default'
+#   dependsOn: Job1
 
-  steps:
-  - download: current
-    artifact: ExtensionZip
-    enabled: false
-
+#   steps:
 #   - download: current
 #     artifact: ExtensionZip
-#     path: hello    
+#     enabled: false
+
+# #   - download: current
+# #     artifact: ExtensionZip
+# #     path: hello    
+
+# #   - download: current
+# #     artifact: Artifact1
+# #     path: hello2
 
 #   - download: current
 #     artifact: Artifact1
-#     path: hello2
+#     displayName: Download -- Artifact1    
 
-  - download: current
-    artifact: Artifact1
-    displayName: Download -- Artifact1    
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact2
+#     displayName: Download -- Artifact2     
 
-  - download: current
-    artifact: Artifact1
-    name: MyArtifact2
-    displayName: Download -- Artifact2     
+#   - download: current
+#     artifact: Artifact1
+#     name: MyArtifact3
+#     displayName: Download -- Artifact1        
 
-  - download: current
-    artifact: Artifact1
-    name: MyArtifact3
-    displayName: Download -- Artifact1        
+#   - download: current
+#     artifact: Artifact1000
+#     continueOnError: true
 
-  - download: current
-    artifact: Artifact1000
-    continueOnError: true
-
-  - download: current
-    artifact: Artifact1
-    env:
-      x: y  
+#   - download: current
+#     artifact: Artifact1
+#     env:
+#       x: y  
 
 - job: job3
   pool: 'Default'
@@ -81,3 +81,4 @@ jobs:
 
   steps:
   - checkout: none
+  - download: none
