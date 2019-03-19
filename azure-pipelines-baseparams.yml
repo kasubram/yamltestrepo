@@ -80,6 +80,6 @@ jobs:
   dependsOn: Job1
 
   steps:
+  - script: echo Hello, world!    
   - checkout: self
     enabled: false
-  - script: echo Hello, world!    
