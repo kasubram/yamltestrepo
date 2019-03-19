@@ -44,7 +44,6 @@ jobs:
     artifact: ExtensionZip
     enabled: false
 
-
 #   - download: current
 #     artifact: ExtensionZip
 #     path: hello    
@@ -53,26 +52,32 @@ jobs:
 #     artifact: Artifact1
 #     path: hello2
 
-#   - download: current
-#     artifact: Artifact1
-#     displayName: Download -- Artifact1    
+  - download: current
+    artifact: Artifact1
+    displayName: Download -- Artifact1    
 
-#   - download: current
-#     artifact: Artifact1
-#     name: MyArtifact2
-#     displayName: Download -- Artifact2     
+  - download: current
+    artifact: Artifact1
+    name: MyArtifact2
+    displayName: Download -- Artifact2     
 
-#   - download: current
-#     artifact: Artifact1
-#     name: MyArtifact3
-#     displayName: Download -- Artifact1        
+  - download: current
+    artifact: Artifact1
+    name: MyArtifact3
+    displayName: Download -- Artifact1        
 
-#   - download: current
-#     artifact: Artifact1000
-#     continueOnError: true
+  - download: current
+    artifact: Artifact1000
+    continueOnError: true
 
-#   - download: current
-#     artifact: Artifact1
-#     env:
-#       x: y  
+  - download: current
+    artifact: Artifact1
+    env:
+      x: y  
 
+- job: job3
+  pool: 'Default'
+  dependsOn: Job1
+
+  steps:
+  - checkout: none
