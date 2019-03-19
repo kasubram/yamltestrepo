@@ -82,4 +82,4 @@ jobs:
   steps:
   - script: echo Hello, world!    
   - checkout: self
-    enabled: false
+    #enabled: false
