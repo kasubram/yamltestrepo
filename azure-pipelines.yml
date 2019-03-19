@@ -1,3 +1,8 @@
+resources:
+  pipelines:
+    pipeline: test
+    source: test
+    project: p1
 jobs:
 - job: Job1
   pool: 'Default'
@@ -6,4 +11,5 @@ jobs:
   - script: echo Hello, world!
     displayName: 'Run a one-line script'
     enabled: false
+  - download: none 
 
