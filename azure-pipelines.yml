@@ -1,8 +1,9 @@
 resources:
   pipelines:
-    pipeline: test
-    source: test
-    project: p1
+  - pipeline: MyPipeline2
+    project: MyFirstProject
+    source: MyFirstProject
+
 jobs:
 - job: Job1
   pool: 'Default'
