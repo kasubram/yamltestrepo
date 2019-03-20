@@ -14,11 +14,11 @@ jobs:
     displayName: 'Run a one-line script'
     enabled: false
 
-  # - task: PublishPipelineArtifact@0
-  #   displayName: Upload Vsix File
-  #   inputs:
-  #     artifactName: Extension
-  #     targetPath: Extension/vsix
+  - task: PublishPipelineArtifact@0
+    displayName: Upload Vsix File
+    inputs:
+      artifactName: Extension
+      targetPath: Extension/vsix
   # - task: PublishPipelineArtifact@0
   #   displayName: Upload Vsix Zip File
   #   inputs:
@@ -79,7 +79,7 @@ jobs:
   pool: 'Default'
   dependsOn: Job1
 
-  steps:
-  - script: echo Hello, world!    
-  - checkout: self
-    #enabled: false
+  # steps:
+  # - script: echo Hello, world!    
+  # - checkout: self
+  #   enabled: false
