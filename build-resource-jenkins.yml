@@ -16,5 +16,6 @@ jobs:
     steps:
       - script: echo download all artifact
       - downloadBuild: MyJenkins
+        enabled: false
 
 
