@@ -15,6 +15,6 @@ jobs:
     pool: 'Default'
     steps:
       - script: echo download all artifact
-      - downloadBuild: none
+      - downloadBuild: MyJenkins
 
 
