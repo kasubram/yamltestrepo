@@ -8,14 +8,14 @@ resources:
   - build: MyJenkins2
     type: Jenkins
     connection: rmcdp
-    source: FreeStyleProject
+    source: ReleaseManagement/RMCDP/MultiBranchPipelineProject
 
 jobs:
   - job: job1
     pool: 'Default'
     steps:
       - script: echo download all artifact
-      - downloadBuild: MyJenkins
-        displayName: Download FreeStyle project
+      - downloadBuild: MyJenkins2
+        displayName: Download MultiBranch project
 
 
