@@ -6,7 +6,7 @@ resources:
     source: FreeStyleProject
     version: 45
   - build: MyJenkins2
-    type: Pipeline
+    type: Jenkins
     connection: rmcdp
     source: ReleaseManagement/RMCDP/RMCDPProject-FreeStyle
 
