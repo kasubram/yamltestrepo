@@ -17,5 +17,7 @@ jobs:
       - script: echo download all artifact
       - downloadBuild: MyJenkins2
         displayName: Download Folder project
+        path: foo\bar
+        patterns: '*.txt'
 
 
