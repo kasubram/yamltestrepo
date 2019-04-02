@@ -49,7 +49,7 @@ stages:
     steps:
       - download: current
         artifact: ExtensionZip
-        path: $(Pipeline.Workspace)\mypath
+        path: mypath
 
   # - job: Download_apply_attributes_to_all_artifacts
   #   displayName: Download apply attributes to all artifacts
