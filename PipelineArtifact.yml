@@ -33,13 +33,23 @@ stages:
   #   steps:
   #     - script: echo Will download all artifacts uploaded in Job1
   
-  - job: Download_only_specific_artifact
-    displayName: Download only specific artifact
+  # - job: Download_only_specific_artifact
+  #   displayName: Download only specific artifact with layout provided by pipeline
+  #   dependsOn: Job1
+  #   pool: 'Default'
+  #   steps:
+  #     - download: current
+  #       artifact: Extension
+
+  
+  - job: job3
+    displayName: Download only specific artifact with layout provided by customer
     dependsOn: Job1
     pool: 'Default'
     steps:
       - download: current
-        artifact: Extension
+        artifact: ExtensionZip
+        path: $(Pipeline.Workspace)\mypath
 
   # - job: Download_apply_attributes_to_all_artifacts
   #   displayName: Download apply attributes to all artifacts
