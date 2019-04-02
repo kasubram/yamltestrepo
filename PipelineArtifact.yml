@@ -51,11 +51,22 @@ stages:
   #       artifact: ExtensionZip
   #       path: mypath
 
+  # - job: job4
+  #   displayName: apply attributes to all artifacts
+  #   dependsOn: Job1
+  #   pool: 'Default'
+  #   steps:
+  #     - download: current
+  #       path: zip
+  #       patterns: '*.md'
+
   - job: job4
-    displayName: apply attributes to all artifacts
+    displayName: apply attributes to all artifacts multiline patterns
     dependsOn: Job1
     pool: 'Default'
     steps:
       - download: current
-        path: zip
-        patterns: '*.md'
+        path: extensionzipfolder
+        patterns: |
+          *.md
+          *.vsix
