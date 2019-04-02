@@ -26,23 +26,24 @@ stages:
   - job: Download_all_by_default
     displayName: Download all artifacts by default
     dependsOn: Job1
-    pool:
-      name: 'Default'
+    pool: 'Default'
     steps:
       - script: echo Will download all artifacts uploaded in Job1
   
   - job: Download_only_specific_artifact
     displayName: Download only specific artifact
     dependsOn: Job1
-    pool:
-      name: 'Default'
+    pool: 'Default'
     steps:
-      - powershell: |
-          1..$count | % {
-            Start-Sleep -s 1
-            Write-Host "Waiting TimeDelay $_"
-          }
-
       - download: current
         artifact: Extension
-        
+
+  - job: Download_apply_attributes_to_all_artifacts
+    displayName: Download apply attributes to all artifacts
+    dependsOn: Job1
+    pool: 'Default'
+    steps:
+      - download: current
+        artifact: ExtensionZip
+        path: zip
+        patterns: '*.txt'
