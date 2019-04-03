@@ -11,8 +11,8 @@ stages:
     pool:
       name: 'Default'
     steps:
-    #   - upload: Extension/vsix
-    #     artifact: Extension
+      - upload: Extension/vsix
+        artifact: Extension
 
       # - task: PublishPipelineArtifact@0
       #   displayName: Upload Vsix File
