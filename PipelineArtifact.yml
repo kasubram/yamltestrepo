@@ -47,23 +47,23 @@ stages:
   #     - download: current
   #       artifact: Extension
   
-  - job: job3
-    displayName: Download only specific artifact with layout provided by customer
-    dependsOn: Job1
-    pool: 'Default'
-    steps:
-      - download: current
-        artifact: ExtensionZip
-        path: mypath
-
-  # - job: job4
-  #   displayName: apply attributes to all artifacts
+  # - job: job3
+  #   displayName: Download only specific artifact with layout provided by customer
   #   dependsOn: Job1
   #   pool: 'Default'
   #   steps:
   #     - download: current
-  #       path: zip
-  #       patterns: '*.md'
+  #       artifact: ExtensionZip
+  #       path: mypath
+
+  - job: job4
+    displayName: apply attributes to all artifacts
+    dependsOn: Job1
+    pool: 'Default'
+    steps:
+      - download: current
+        path: zip
+        patterns: '*.md'
 
   # - job: job4
   #   displayName: apply attributes to all artifacts multiline patterns
