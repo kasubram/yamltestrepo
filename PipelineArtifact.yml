@@ -32,12 +32,12 @@ stages:
       #     pathToPublish: testFolder
       #     artifactName: Artifact1          
 
-  # - job: Download_all_by_default
-  #   displayName: Download all artifacts by default
-  #   dependsOn: Job1
-  #   pool: 'Default'
-  #   steps:
-  #     - script: echo Will download all artifacts uploaded in Job1
+  - job: Download_all_by_default
+    displayName: Download all artifacts by default
+    dependsOn: Job1
+    pool: 'Default'
+    steps:
+      - script: echo Will download all artifacts uploaded in Job1
   
   # - job: Download_only_specific_artifact
   #   displayName: Download only specific artifact with layout provided by pipeline
