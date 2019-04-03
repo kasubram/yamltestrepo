@@ -29,15 +29,15 @@ stages:
           artifactType: filePath
           targetPath: \\kalyan-dev\share\agentartifactfolder
   
-  # - job: Download_all_by_default
-  #   displayName: Download all artifacts by default
-  #   dependsOn: Job1
-  #   pool:
-  #     name: 'Default'
-  #   steps:
-  #     - script: echo Will download all artifacts uploaded in Job1
-  #     - powershell: |
-  #         gci env:
+  - job: Download_all_by_default
+    displayName: Download all artifacts by default
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - script: echo Will download all artifacts uploaded in Job1
+      - powershell: |
+          gci env:
   
   
   - job: Download_only_specific_artifact
@@ -54,82 +54,82 @@ stages:
         patterns: '**/*.txt'
         continueOnError: true
         
-#   - job: Download_none
-#     displayName: Don't download any artifact using none
-#     dependsOn: Job1
-#     pool:
-#       name: 'Default'
-#     steps:
-#       - download: none
+  - job: Download_none
+    displayName: Don't download any artifact using none
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: none
 
-# #----- patterns begin --------------------#
-#   - job: Download_pattern_literal
-#     displayName: Download pattern literal 
-#     dependsOn: Job1
-#     pool:
-#       name: 'Default'
-#     steps:
-#       - download: current
-#         artifact: Artifact1
-#         patterns: '**/*.txt'
+#----- patterns begin --------------------#
+  - job: Download_pattern_literal
+    displayName: Download pattern literal 
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        patterns: '**/*.txt'
 
-#   - job: Download_pattern_sequence
-#     displayName: Download pattern sequence
-#     dependsOn: Job1
-#     pool:
-#       name: 'Default'
-#     steps:
-#       - download: current
-#         artifact: Artifact1
-#         patterns: |
-#           **/*.cmd
-#           **/*.ps1
+  - job: Download_pattern_sequence
+    displayName: Download pattern sequence
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        artifact: Artifact1
+        patterns: |
+          **/*.cmd
+          **/*.ps1
 
-# #----- patterns end --------------------#
-#   - job: Download_to_relative_custom_location
-#     displayName: Download to relative custom location
-#     dependsOn: Job1
-#     pool:
-#       name: 'Default'
-#     steps:
-#       - script: echo $(System.DefaultWorkingDirectory)
-#       - download: current
-#         artifact: Artifact1
-#         path: "foo/bar"
+#----- patterns end --------------------#
+  - job: Download_to_relative_custom_location
+    displayName: Download to relative custom location
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - script: echo $(System.DefaultWorkingDirectory)
+      - download: current
+        artifact: Artifact1
+        path: "foo/bar"
 
-#   - job: Download_apply_common_setting
-#     displayName: Download apply commen setting for all artifact
-#     dependsOn: Job1
-#     pool:
-#       name: 'Default'
-#     steps:
-#       - download: current
-#         patterns: |
-#           **/*.cmd
-#           **/*.ps1
+  - job: Download_apply_common_setting
+    displayName: Download apply commen setting for all artifact
+    dependsOn: Job1
+    pool:
+      name: 'Default'
+    steps:
+      - download: current
+        patterns: |
+          **/*.cmd
+          **/*.ps1
 
-# - stage: stage2
-#   dependsOn: stage1
-#   jobs:
-#     - job: MyJobFromStage2
-#       displayName: download all artifacts from stage1 jobs
-#       pool:
-#         name: 'Default'
-#       steps:
-#         - script: echo I am stage2 Job
+- stage: stage2
+  dependsOn: stage1
+  jobs:
+    - job: MyJobFromStage2
+      displayName: download all artifacts from stage1 jobs
+      pool:
+        name: 'Default'
+      steps:
+        - script: echo I am stage2 Job
 
-#     - job: DownloadTaskWithCustomFields_disabled
-#       displayName: download task with custome fields - disabled
-#       pool: 'Default'
-#       steps:
-#         - download: current
-#           artifact: Artifact1
-#           enabled: false
-#     #- job: Invalid_ArtifactName_provided
-#     #  displayName: Download and try to fail user task when wrong info is given
-#     #  pool:
-#     #    name: 'Default'
-#     #  steps:
-#     #    - download: current
-#     #      artifact: Artifact1000
+    - job: DownloadTaskWithCustomFields_disabled
+      displayName: download task with custome fields - disabled
+      pool: 'Default'
+      steps:
+        - download: current
+          artifact: Artifact1
+          enabled: false
+    #- job: Invalid_ArtifactName_provided
+    #  displayName: Download and try to fail user task when wrong info is given
+    #  pool:
+    #    name: 'Default'
+    #  steps:
+    #    - download: current
+    #      artifact: Artifact1000
 
