@@ -26,12 +26,12 @@ stages:
           artifactName: ExtensionZip
           targetPath: Extension/Zip
 
-  # - job: Download_all_by_default
-  #   displayName: Download all artifacts by default
-  #   dependsOn: Job1
-  #   pool: 'Default'
-  #   steps:
-  #     - script: echo Will download all artifacts uploaded in Job1
+  - job: Download_all_by_default
+    displayName: Download all artifacts by default
+    dependsOn: Job1
+    pool: 'Default'
+    steps:
+      - script: echo Will download all artifacts uploaded in Job1
   
   # - job: Download_only_specific_artifact
   #   displayName: Download only specific artifact with layout provided by pipeline
@@ -42,14 +42,14 @@ stages:
   #       artifact: Extension
 
   
-  - job: job3
-    displayName: Download only specific artifact with layout provided by customer
-    dependsOn: Job1
-    pool: 'Default'
-    steps:
-      - download: current
-        artifact: ExtensionZip
-        path: mypath
+  # - job: job3
+  #   displayName: Download only specific artifact with layout provided by customer
+  #   dependsOn: Job1
+  #   pool: 'Default'
+  #   steps:
+  #     - download: current
+  #       artifact: ExtensionZip
+  #       path: mypath
 
   # - job: job4
   #   displayName: apply attributes to all artifacts
