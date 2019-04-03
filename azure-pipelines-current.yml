@@ -48,9 +48,11 @@ stages:
     steps:
       - download: current
         artifact: Artifact1
+        continueOnError: true
       - download: current
         artifact: AzCopy
         patterns: '**/*.txt'
+        continueOnError: true
         
   - job: Download_none
     displayName: Don't download any artifact using none
