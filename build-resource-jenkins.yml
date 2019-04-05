@@ -4,7 +4,8 @@ resources:
     type: Jenkins
     connection: kalyan-dev
     source: github
-
+    version: 30
+    
 jobs:
   - job: job1
     pool: 'Default'
