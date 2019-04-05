@@ -2,13 +2,8 @@ resources:
   builds:
   - build: MyJenkins
     type: Jenkins
-    connection: rmcdp
-    source: FreeStyleProject
-    version: 45
-  - build: MyJenkins2
-    type: Jenkins
-    connection: rmcdp
-    source: ReleaseManagement/RMCDP/RMCDPProject-FreeStyle
+    connection: kalyan-dev
+    source: github
 
 jobs:
   - job: job1
