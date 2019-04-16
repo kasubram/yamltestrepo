@@ -1,6 +1,6 @@
 jobs:
 - job: Job1
-  pool: 'Hosted'
+  pool: default
   steps:
     - task: PublishBuildArtifacts@1
       displayName: Publish TestFolder
