@@ -11,7 +11,7 @@ jobs:
     pool: 'Default'
     steps:
       - script: echo download all artifact
-      # - downloadBuild: MyJenkins2
+     - downloadBuild: MyJenkins2
       #   displayName: Download Folder project
       #   patterns: '*.txt'
 
