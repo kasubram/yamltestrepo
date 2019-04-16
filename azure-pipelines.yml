@@ -1,16 +1,8 @@
-resources:
-  pipelines:
-  - pipeline: MyPipeline2
-    project: MyFirstProject
-    source: MyFirstProject
-
 jobs:
 - job: Job1
-  pool: 'Default'
-
   steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
-    enabled: false
-  - download: none 
-
+    - task: PublishBuildArtifacts@1
+      displayName: Publish TestFolder
+      inputs:
+        pathToPublish: testFolder
+        artifactName: Artifact1
