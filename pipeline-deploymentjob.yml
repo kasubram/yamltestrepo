@@ -103,6 +103,7 @@ stages:
               - powershell: |
                   Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+                  Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
                 displayName: Scorch workspace
        
   - deployment: DeployOnServer
