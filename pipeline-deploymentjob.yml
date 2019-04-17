@@ -13,13 +13,11 @@ stages:
       displayName: Create Artifact
       inputs:
         artifactName: Artifact1
-        targetPath: 'Sample-DownloadArtifact-Pipeline.Yaml'
+        targetPath: testFolder
 
-    - task: PublishPipelineArtifact@0
+    - upload: azure-pipelines.yml
+      artifact: Artifact2
       displayName: Create Artifact2
-      inputs:
-        artifactName: Artifact2
-        targetPath: 'Test'
 
 - stage: QA
   displayName: QA stage
@@ -60,8 +58,8 @@ stages:
               - task: PublishPipelineArtifact@0
                 displayName: Create Artifact
                 inputs:
-                  artifactName: Artifact3
-                  targetPath: 'Sample-pipeline.yaml'
+                  artifactName: AzCopy
+                  targetPath: Files/azcopyFiles
 
   - deployment: Deploy2
     displayName: Deploy2 job
