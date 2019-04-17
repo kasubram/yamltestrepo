@@ -28,9 +28,35 @@ stages:
         displayName: 'Run a one-line script'
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
 
+  - job: dummyJob2
+    pool: default
+    steps:
+      - download: current
+        path: foo
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
       - powershell: |
-          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
-          Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+        displayName: Scorch workspace
+
+  - job: dummyJob3
+    pool: default
+    steps:
+      - download: current
+        artifact: artifact1
+        path: bar
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
+        displayName: Scorch workspace
+
+  - job: dummyJob4
+    pool: default
+    steps:
+      - download: current
+      artifact: artifact1
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
         displayName: Scorch workspace
 
 - stage: Deploy
