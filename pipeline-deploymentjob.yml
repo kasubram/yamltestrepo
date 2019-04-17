@@ -17,7 +17,6 @@ stages:
 
     - upload: azure-pipelines.yml
       artifact: Artifact2
-      displayName: Create Artifact2
 
 - stage: QA
   displayName: QA stage
