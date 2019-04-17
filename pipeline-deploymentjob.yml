@@ -53,7 +53,7 @@ stages:
     pool: default
     steps:
       - download: current
-      artifact: artifact1
+        artifact: artifact1
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
       - powershell: |
           Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
