@@ -15,60 +15,85 @@ stages:
         artifactName: Artifact1
         targetPath: testFolder
 
-    - upload: azure-pipelines.yml
+    - upload: Extension
       artifact: Artifact2
 
 - stage: QA
   displayName: QA stage
   jobs:
-  - job: dummyJob
-    pool: default
+  - job: dummyJob1
+    #pool: default
     steps:
       - script: echo Hello, world! This is dummy job
         displayName: 'Run a one-line script'
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+        displayName: Scorch workspace
 
   - job: dummyJob2
-    pool: default
+    #pool: default
     steps:
       - download: current
         path: foo
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
       - powershell: |
           Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
         displayName: Scorch workspace
 
   - job: dummyJob3
-    pool: default
+    #pool: default
+    steps:
+      - download: current
+        patterns: |
+          *.vsix
+          *.vsomanifest
+          *.txt
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+        displayName: Scorch workspace
+
+
+  - job: dummyJob3
+    #pool: default
     steps:
       - download: current
         artifact: artifact1
         path: bar
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
       - powershell: |
           Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
         displayName: Scorch workspace
 
   - job: dummyJob4
-    pool: default
+    #pool: default
     steps:
       - download: current
         artifact: artifact1
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
       - powershell: |
           Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
         displayName: Scorch workspace
 
   - job: dummyJob4
-    pool: default
+    #pool: default
     steps:
       - download: none
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
       
 - stage: Deploy
   displayName: Deploy stage
   jobs:  
-  - deployment: Deploy
+  - deployment: Deploy1
     displayName: Deploy job
     pool: default
     environment: Environment01
@@ -86,11 +111,9 @@ stages:
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                 displayName: Scorch workspace
 
-              - task: PublishPipelineArtifact@0
-                displayName: Create Artifact
-                inputs:
-                  artifactName: AzCopy
-                  targetPath: Files/azcopyFiles
+              - upload: Files/azcopyFiles
+                displayName: Create Azcopy Artifact
+                Artifact: AzCopy
 
   - deployment: Deploy2
     displayName: Deploy2 job
@@ -111,7 +134,103 @@ stages:
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                   Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
                 displayName: Scorch workspace
-       
+
+  - deployment: Deploy3
+    displayName: Deploy3 job
+    pool: default
+    environment: Environment01
+    dependsOn: Deploy
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo Hello, world! This is deploy job
+                displayName: 'Run a one-line script'
+              - download: current
+                path: foo
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore Workspace
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy4
+    displayName: Deploy4 job
+    pool: default
+    environment: Environment01
+    dependsOn: Deploy
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo Hello, world! This is deploy job
+                displayName: 'Run a one-line script'
+              - download: current
+                patterns: |
+                  *.vsix
+                  *.vsomanifest
+                  *.txt
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore Workspace
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                  Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy5
+    displayName: Deploy5 job
+    pool: default
+    environment: Environment01
+    dependsOn: Deploy
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo Hello, world! This is deploy job
+                displayName: 'Run a one-line script'
+              - download: current
+                artifact: artifact1
+                path: bar
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore Workspace
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy6
+    displayName: Deploy6 job
+    pool: default
+    environment: Environment01
+    dependsOn: Deploy
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo Hello, world! This is deploy job
+                displayName: 'Run a one-line script'
+              - download: current
+                artifact: artifact1
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore Workspace
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy7
+    displayName: Deploy7 job
+    pool: default
+    environment: Environment01
+    dependsOn: Deploy
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo Hello, world! This is deploy job
+                displayName: 'Run a one-line script'
+              - download: none
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore Workspace
+
   - deployment: DeployOnServer
     displayName: Deploy job
     pool: server
