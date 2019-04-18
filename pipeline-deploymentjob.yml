@@ -26,8 +26,6 @@ stages:
     # - upload: Extension
     #   artifact: Artifact2
     - powershell: |
-        Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
-        Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
         Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
       displayName: Scorch workspace
       continueOnError: true
