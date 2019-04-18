@@ -111,8 +111,11 @@ stages:
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                 displayName: Scorch workspace
 
-              - upload: Files/azcopyFiles
-                artifact: AzCopy
+              - task: PublishPipelineArtifact@0
+                displayName: Create Azcopy Artifact
+                inputs:
+                  artifactName: AzCopy
+                  targetPath: Files/azcopyFiles
 
   - deployment: Deploy2
     displayName: Deploy2 job
