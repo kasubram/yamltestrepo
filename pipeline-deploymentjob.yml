@@ -59,6 +59,12 @@ stages:
           Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
         displayName: Scorch workspace
 
+  - job: dummyJob4
+    pool: default
+    steps:
+      - download: none
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+      
 - stage: Deploy
   displayName: Deploy stage
   jobs:  
