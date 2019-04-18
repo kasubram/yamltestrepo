@@ -112,7 +112,6 @@ stages:
                 displayName: Scorch workspace
 
               - upload: Files/azcopyFiles
-                displayName: Create Azcopy Artifact
                 artifact: AzCopy
 
   - deployment: Deploy2
