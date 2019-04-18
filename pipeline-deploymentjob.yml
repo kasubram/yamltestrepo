@@ -233,7 +233,7 @@ stages:
 
   - deployment: DeployOnServer
     displayName: Deploy job
-    #pool: server
+    pool: server
     environment: Environment01
     strategy:
         runOnce:
