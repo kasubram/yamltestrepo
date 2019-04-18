@@ -240,15 +240,15 @@ stages:
               - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
                 displayName: Explore Workspace
 
-  - deployment: DeployOnServer
-    displayName: Deploy job
-    pool: server
-    environment: Environment01
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-            - task: Delay@1
-              inputs:
-                delayForMinutes: '1' 
+  # - deployment: DeployOnServer
+  #   displayName: Deploy job
+  #   pool: server
+  #   environment: Environment01
+  #   strategy:
+  #       runOnce:
+  #         deploy:
+  #           steps:
+  #           - task: Delay@1
+  #             inputs:
+  #               delayForMinutes: '1' 
                 
