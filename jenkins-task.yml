@@ -1,6 +1,6 @@
 jobs:
 - job: Job1
-  pool: kasubram-test
+  pool: artifacts
   steps:
     - task: JenkinsDownloadArtifacts@1
       displayName: Download Jenkins Artifact
