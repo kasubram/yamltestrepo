@@ -1,23 +1,23 @@
 stages:
-- stage: Build
-  displayName: Build stage
-  jobs:  
-  - job: Build
-    displayName: Build job
-    #pool: default
-    pool: hosted
-    steps:
-    - script: echo Hello, world! This is CI job
-      displayName: 'Run a one-line script'
+# - stage: Build
+#   displayName: Build stage
+#   jobs:  
+#   - job: Build
+#     displayName: Build job
+#     #pool: default
+#     pool: hosted
+#     steps:
+#     - script: echo Hello, world! This is CI job
+#       displayName: 'Run a one-line script'
 
-    - task: PublishPipelineArtifact@0
-      displayName: Create Artifact
-      inputs:
-        artifactName: Artifact1
-        targetPath: testFolder
+#     - task: PublishPipelineArtifact@0
+#       displayName: Create Artifact
+#       inputs:
+#         artifactName: Artifact1
+#         targetPath: testFolder
 
-    - upload: Extension
-      artifact: Artifact2
+#     - upload: Extension
+#       artifact: Artifact2
 
 # - stage: QA
 #   displayName: QA stage
@@ -107,10 +107,10 @@ stages:
               - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
                 displayName: Explore workspace
 
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
-                  Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
-                displayName: Scorch workspace
+              # - powershell: |
+              #     Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+              #     Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+              #   displayName: Scorch workspace
 
               - task: PublishPipelineArtifact@0
                 displayName: Create Azcopy Artifact
@@ -134,121 +134,119 @@ stages:
                 displayName: Explore workspace
 
               - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
-                  Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                   Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
                 displayName: Scorch workspace
 
-  - deployment: Deploy3
-    displayName: Deploy3 job
-    #pool: default
-    pool: hosted
-    environment: Environment01
-    dependsOn: Deploy1
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo Hello, world! This is deploy job
-                displayName: 'Run a one-line script'
-              - download: current
-                path: foo
-              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-                displayName: Explore Workspace
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
-                displayName: Scorch workspace
-
-  - deployment: Deploy4
-    displayName: Deploy4 job
-    #pool: default
-    pool: hosted
-    environment: Environment01
-    dependsOn: Deploy1
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo Hello, world! This is deploy job
-                displayName: 'Run a one-line script'
-              - download: current
-                patterns: |
-                  *.vsix
-                  *.vsomanifest
-                  *.txt
-              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-                displayName: Explore Workspace
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
-                  Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
-                displayName: Scorch workspace
-
-  - deployment: Deploy5
-    displayName: Deploy5 job
-    #pool: default
-    pool: hosted
-    environment: Environment01
-    dependsOn: Deploy1
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo Hello, world! This is deploy job
-                displayName: 'Run a one-line script'
-              - download: current
-                artifact: artifact1
-                path: bar
-              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-                displayName: Explore Workspace
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
-                displayName: Scorch workspace
-
-  - deployment: Deploy6
-    displayName: Deploy6 job
-    #pool: default
-    pool: hosted
-    environment: Environment01
-    dependsOn: Deploy1
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo Hello, world! This is deploy job
-                displayName: 'Run a one-line script'
-              - download: current
-                artifact: artifact1
-              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-                displayName: Explore Workspace
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
-                displayName: Scorch workspace
-
-  - deployment: Deploy7
-    displayName: Deploy7 job
-    #pool: default
-    pool: hosted
-    environment: Environment01
-    dependsOn: Deploy1
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: echo Hello, world! This is deploy job
-                displayName: 'Run a one-line script'
-              - download: none
-              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-                displayName: Explore Workspace
-
-  # - deployment: DeployOnServer
-  #   displayName: Deploy job
-  #   pool: server
+  # - deployment: Deploy3
+  #   displayName: Deploy3 job
+  #   #pool: default
+  #   pool: hosted
   #   environment: Environment01
+  #   dependsOn: Deploy1
   #   strategy:
   #       runOnce:
   #         deploy:
   #           steps:
-  #           - task: Delay@1
-  #             inputs:
-  #               delayForMinutes: '1' 
+  #             - script: echo Hello, world! This is deploy job
+  #               displayName: 'Run a one-line script'
+  #             - download: current
+  #               path: foo
+  #             - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+  #               displayName: Explore Workspace
+  #             - powershell: |
+  #                 Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+  #               displayName: Scorch workspace
+
+  # - deployment: Deploy4
+  #   displayName: Deploy4 job
+  #   #pool: default
+  #   pool: hosted
+  #   environment: Environment01
+  #   dependsOn: Deploy1
+  #   strategy:
+  #       runOnce:
+  #         deploy:
+  #           steps:
+  #             - script: echo Hello, world! This is deploy job
+  #               displayName: 'Run a one-line script'
+  #             - download: current
+  #               patterns: |
+  #                 *.vsix
+  #                 *.vsomanifest
+  #                 *.txt
+  #             - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+  #               displayName: Explore Workspace
+  #             - powershell: |
+  #                 Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+  #                 Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+  #               displayName: Scorch workspace
+
+  # - deployment: Deploy5
+  #   displayName: Deploy5 job
+  #   #pool: default
+  #   pool: hosted
+  #   environment: Environment01
+  #   dependsOn: Deploy1
+  #   strategy:
+  #       runOnce:
+  #         deploy:
+  #           steps:
+  #             - script: echo Hello, world! This is deploy job
+  #               displayName: 'Run a one-line script'
+  #             - download: current
+  #               artifact: artifact1
+  #               path: bar
+  #             - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+  #               displayName: Explore Workspace
+  #             - powershell: |
+  #                 Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
+  #               displayName: Scorch workspace
+
+  # - deployment: Deploy6
+  #   displayName: Deploy6 job
+  #   #pool: default
+  #   pool: hosted
+  #   environment: Environment01
+  #   dependsOn: Deploy1
+  #   strategy:
+  #       runOnce:
+  #         deploy:
+  #           steps:
+  #             - script: echo Hello, world! This is deploy job
+  #               displayName: 'Run a one-line script'
+  #             - download: current
+  #               artifact: artifact1
+  #             - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+  #               displayName: Explore Workspace
+  #             - powershell: |
+  #                 Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
+  #               displayName: Scorch workspace
+
+  # - deployment: Deploy7
+  #   displayName: Deploy7 job
+  #   #pool: default
+  #   pool: hosted
+  #   environment: Environment01
+  #   dependsOn: Deploy1
+  #   strategy:
+  #       runOnce:
+  #         deploy:
+  #           steps:
+  #             - script: echo Hello, world! This is deploy job
+  #               displayName: 'Run a one-line script'
+  #             - download: none
+  #             - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+  #               displayName: Explore Workspace
+
+  # # - deployment: DeployOnServer
+  # #   displayName: Deploy job
+  # #   pool: server
+  # #   environment: Environment01
+  # #   strategy:
+  # #       runOnce:
+  # #         deploy:
+  # #           steps:
+  # #           - task: Delay@1
+  # #             inputs:
+  # #               delayForMinutes: '1' 
                 
