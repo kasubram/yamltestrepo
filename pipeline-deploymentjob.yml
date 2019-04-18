@@ -49,7 +49,7 @@ stages:
     steps:
       - download: current
         patterns: |
-          *.vsix
+          *.md
           *.txt
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore Workspace
