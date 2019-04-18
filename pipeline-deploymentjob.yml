@@ -23,8 +23,14 @@ stages:
         pathToPublish: testFolder
         artifactName: Artifact1
 
-    - upload: Extension
-      artifact: Artifact2
+    # - upload: Extension
+    #   artifact: Artifact2
+    - powershell: |
+        Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
+        Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+        Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+      displayName: Scorch workspace
+      continueOnError: true
 
 - stage: QA
   displayName: QA stage
@@ -46,9 +52,9 @@ stages:
         path: foo
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore Workspace
-      - powershell: |
-          Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
-        displayName: Scorch workspace
+      # - powershell: |
+      #     Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+      #   displayName: Scorch workspace
 
 #   - job: dummyJob3
 #     #pool: default
@@ -118,12 +124,17 @@ stages:
                   # Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                 displayName: Scorch workspace
-
-              - task: PublishPipelineArtifact@0
+              - task: PublishBuildArtifacts@1
                 displayName: Create Azcopy Artifact
                 inputs:
+                  pathToPublish: Files/azcopyFiles
                   artifactName: AzCopy
-                  targetPath: Files/azcopyFiles
+              # - task: PublishPipelineArtifact@0
+              #   displayName: Create Azcopy Artifact
+              #   inputs:
+              #     artifactName: AzCopy
+              #     targetPath: Files/azcopyFiles
+
 
   - deployment: Deploy2
     displayName: Deploy2 job
@@ -140,9 +151,9 @@ stages:
               - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
                 displayName: Explore workspace
 
-              - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
-                displayName: Scorch workspace
+              # - powershell: |
+              #     Remove-Item $(Pipeline.Workspace)\Azcopy -Recurse -Force
+              #   displayName: Scorch workspace
 
   # - deployment: Deploy3
   #   displayName: Deploy3 job
