@@ -38,17 +38,17 @@ stages:
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore Workspace
 
-#   - job: dummyJob2
-#     #pool: default
-#     pool: hosted
-#     steps:
-#       - download: current
-#         path: foo
-#       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-#         displayName: Explore Workspace
-#       - powershell: |
-#           Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
-#         displayName: Scorch workspace
+  - job: dummyJob2
+    #pool: default
+    pool: hosted
+    steps:
+      - download: current
+        path: foo
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+        displayName: Scorch workspace
 
 #   - job: dummyJob3
 #     #pool: default
@@ -115,7 +115,7 @@ stages:
                 displayName: Explore workspace
 
               - powershell: |
-                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                  # Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
                   Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
                 displayName: Scorch workspace
 
