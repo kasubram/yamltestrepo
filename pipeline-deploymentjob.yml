@@ -25,17 +25,17 @@ stages:
     - upload: Extension
       artifact: Artifact2
 
-# - stage: QA
-#   displayName: QA stage
-#   jobs:
-#   - job: dummyJob1
-#     #pool: default
-#     pool: hosted
-#     steps:
-#       - script: echo Hello, world! This is dummy job
-#         displayName: 'Run a one-line script'
-#       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
-#         displayName: Explore Workspace
+- stage: QA
+  displayName: QA stage
+  jobs:
+  - job: dummyJob1
+    #pool: default
+    pool: hosted
+    steps:
+      - script: echo Hello, world! This is dummy job
+        displayName: 'Run a one-line script'
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+        displayName: Explore Workspace
 
 #   - job: dummyJob2
 #     #pool: default
