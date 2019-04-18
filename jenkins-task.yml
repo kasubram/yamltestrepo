@@ -1,3 +1,4 @@
+trigger:none
 jobs:
 - job: Job1
   pool: artifacts
