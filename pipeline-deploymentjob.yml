@@ -113,7 +113,7 @@ stages:
 
               - upload: Files/azcopyFiles
                 displayName: Create Azcopy Artifact
-                Artifact: AzCopy
+                artifact: AzCopy
 
   - deployment: Deploy2
     displayName: Deploy2 job
