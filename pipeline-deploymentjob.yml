@@ -60,7 +60,7 @@ stages:
         displayName: Scorch workspace
 
 
-  - job: dummyJob3
+  - job: dummyJob4
     #pool: default
     steps:
       - download: current
@@ -72,7 +72,7 @@ stages:
           Remove-Item $(Pipeline.Workspace)\bar -Recurse -Force
         displayName: Scorch workspace
 
-  - job: dummyJob4
+  - job: dummyJob5
     #pool: default
     steps:
       - download: current
@@ -83,7 +83,7 @@ stages:
           Remove-Item $(Pipeline.Workspace)\artifact1 -Recurse -Force
         displayName: Scorch workspace
 
-  - job: dummyJob4
+  - job: dummyJob6
     #pool: default
     steps:
       - download: none
