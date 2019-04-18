@@ -48,7 +48,7 @@ stages:
     pool: hosted
     steps:
       - download: current
-        patterns: '*.md'
+        patterns: '*.txt'
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore Workspace
       - powershell: |
