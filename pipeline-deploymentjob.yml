@@ -31,7 +31,7 @@ stages:
   jobs:
   - job: dummyJob1
     #pool: default
-    pool: hosted
+    pool: kasubram-test
     steps:
       - script: echo Hello, world! This is dummy job
         displayName: 'Run a one-line script'
@@ -40,7 +40,7 @@ stages:
 
   - job: dummyJob2
     #pool: default
-    pool: hosted
+    pool: kasubram-test
     steps:
       - download: current
         path: foo
