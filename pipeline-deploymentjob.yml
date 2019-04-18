@@ -96,7 +96,7 @@ stages:
   - deployment: Deploy1
     displayName: Deploy job
     #pool: default
-    pool: hosted
+    pool: kasubram-test
     environment: Environment01
     strategy:
         runOnce:
@@ -121,7 +121,7 @@ stages:
   - deployment: Deploy2
     displayName: Deploy2 job
     #pool: default
-    pool: hosted
+    pool: kasubram-test
     environment: Environment01
     dependsOn: Deploy1
     strategy:
