@@ -119,7 +119,7 @@ stages:
     displayName: Deploy2 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
@@ -139,7 +139,7 @@ stages:
     displayName: Deploy3 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
@@ -158,7 +158,7 @@ stages:
     displayName: Deploy4 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
@@ -181,7 +181,7 @@ stages:
     displayName: Deploy5 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
@@ -201,7 +201,7 @@ stages:
     displayName: Deploy6 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
@@ -220,7 +220,7 @@ stages:
     displayName: Deploy7 job
     #pool: default
     environment: Environment01
-    dependsOn: Deploy
+    dependsOn: Deploy1
     strategy:
         runOnce:
           deploy:
