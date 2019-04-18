@@ -1,2 +1,9 @@
-steps:
-  - script
+jobs:
+- job: Job1
+  steps:
+    - task: JenkinsDownloadArtifacts@1
+      displayName: Download Jenkins Artifact
+      inputs:
+        serverEndpoint: rmcdpjenkins3
+        jobName: ReleaseManagement/RMCDP/RMCDPProject-FreeStyle
+
