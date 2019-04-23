@@ -3,7 +3,7 @@ resources:
   - build: MyJenkins
     type: Jenkins
     connection: kalyan-dev
-    #source: github
+    source: github
     version: 30
     
 jobs:
