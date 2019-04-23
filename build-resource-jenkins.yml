@@ -1,10 +1,10 @@
-resources:
-  builds:
-  - build: MyJenkins
-    type: Jenkins
-    connection: kalyan-dev
-    source: github
-    version: 30
+# resources:
+#   builds:
+#   - build: MyJenkins
+#     type: Jenkins
+#     connection: kalyan-dev
+#     source: github
+#     version: 30
     
 jobs:
   - job: job1
