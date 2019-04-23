@@ -2,7 +2,7 @@ resources:
   builds:
   - build: MyJenkins
     type: Jenkins
-    connection: kalyan-dev
+    #connection: kalyan-dev
     source: github
     version: 30
     
