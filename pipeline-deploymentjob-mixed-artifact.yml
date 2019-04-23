@@ -22,6 +22,7 @@ stages:
     steps:
       - download: current
         path: foo
+        continueOnError: true
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore workspace
       # - powershell: |
