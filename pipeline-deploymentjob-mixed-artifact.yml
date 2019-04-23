@@ -1,0 +1,40 @@
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    pool: default
+    steps:
+    - upload: testFolder
+      artifact: Artifact1
+
+- stage: QA
+  displayName: QA stage
+  - job: dummyJob2
+    pool: default
+    steps:
+      - download: current
+        path: foo
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+        displayName: Scorch workspace
+
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: Deploy
+    displayName: Deploy job
+    pool: default
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore workspace
+
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                displayName: Scorch workspace
