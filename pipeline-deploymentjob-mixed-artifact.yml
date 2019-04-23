@@ -6,8 +6,8 @@ stages:
     displayName: Build job
     pool: default
     steps:
-    - upload: testFolder
-      artifact: Artifact1
+      - upload: testFolder
+        artifact: Artifact1
       - task: PublishBuildArtifacts@1
         displayName: Publish yml
         inputs: 
