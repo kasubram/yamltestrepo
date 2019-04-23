@@ -6,8 +6,8 @@ stages:
     displayName: Build job
     pool: default
     steps:
-    # - upload: testFolder
-    #   artifact: Artifact1
+    - upload: testFolder
+      artifact: Artifact1
       - task: PublishBuildArtifacts@1
         displayName: Publish yml
         inputs: 
@@ -24,9 +24,9 @@ stages:
         path: foo
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
         displayName: Explore workspace
-      # - powershell: |
-      #     Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
-      #   displayName: Scorch workspace
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\foo -Recurse -Force
+        displayName: Scorch workspace
 
 - stage: Deploy
   displayName: Deploy stage
@@ -42,6 +42,6 @@ stages:
               - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
                 displayName: Explore workspace
 
-              # - powershell: |
-              #     Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
-              #   displayName: Scorch workspace
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                displayName: Scorch workspace
