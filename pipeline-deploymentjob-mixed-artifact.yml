@@ -11,6 +11,7 @@ stages:
 
 - stage: QA
   displayName: QA stage
+  jobs:
   - job: dummyJob2
     pool: default
     steps:
