@@ -8,6 +8,11 @@ stages:
     steps:
     - upload: testFolder
       artifact: Artifact1
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: 'Extension'
+        ArtifactName: 'Artifact2'
+        publishLocation: 'Container'
 
 - stage: QA
   displayName: QA stage
