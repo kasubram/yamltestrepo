@@ -12,7 +12,18 @@ jobs:
     steps:
       - script: echo download all artifact
       - downloadBuild: MyJenkins
+        path: $(Pipeline.workspace)/foo
+      - downloadBuild: MyJenkins
       #   displayName: Download Folder project
       #   patterns: '*.txt'
 
-
+  - deployment: Deploy
+    displayName: Deploy job
+    pool: default
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore workspace
