@@ -1,0 +1,26 @@
+variables:
+  system.debug: true
+stages:
+  - stage: Publish_Artifact
+    jobs:
+      - job: Publish_Artifact
+        pool:
+          name: Hosted
+        steps:
+          - task: PublishBuildArtifacts@1
+            displayName: Publish_Artifact
+            inputs:
+              PathtoPublish: './README.md'
+              ArtifactName: 'test spaces drop'
+  - stage: Fake_Deploy
+    dependsOn: Publish_Artifact
+    jobs:
+      - deployment: Fake_Deploy
+        pool:
+          name: Hosted
+        environment: null
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - powershell: Write-Host "Hey we made it"

@@ -1,0 +1,110 @@
+#trigger: none
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    pool: Hosted
+    steps:
+    - script: echo Hello, world! This is CI job
+      displayName: 'Run a one-line script'
+
+    - task: PublishBuildArtifacts@1
+      displayName: Create Artifact
+      inputs:
+        artifactName: Artifact1
+        pathToPublish: BVT\testFolder
+
+- stage: QA
+  displayName: QA stage
+  jobs:
+  - job: NoArtifactJob
+    pool: Hosted
+    steps:
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+
+  - job: DownloadAllArtifactJob
+    pool: Hosted
+    steps:
+      - download: current
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact1
+          ls $(Pipeline.Workspace)/Artifact1/a.txt
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+        displayName: Scorch workspace
+
+  - job: DownloadParticularArtifactJob
+    pool: Hosted
+    steps:
+      - download: current
+        artifact: Artifact1
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact1
+          ls $(Pipeline.Workspace)/Artifact1/a.txt
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+        displayName: Scorch workspace
+
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: Deploy0
+    displayName: Upload New Artifact
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: none
+              - checkout: self
+              - task: PublishBuildArtifacts@1
+                displayName: Create Artifact
+                inputs:
+                  artifactName: Extension
+                  pathToPublish: BVT\Extension
+
+  - deployment: Deploy1
+    displayName: Download All Artifacts
+    pool: hosted
+    dependsOn: Deploy0
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: |
+                  ls $(Pipeline.Workspace)/Artifact1
+                  ls $(Pipeline.Workspace)/Artifact1/a.txt
+                  ls $(Pipeline.Workspace)/Extension/
+                  ls $(Pipeline.Workspace)/Extension/Extension.txt
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                  Remove-Item $(Pipeline.Workspace)\Extension -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy2
+    displayName: Download mentioned Artifacts with other properties mentioned
+    pool: hosted
+    dependsOn: Deploy0
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: current
+                artifact: Extension
+                path: MyExtension # In a DG this should be ignore and pipeline creation should not fail
+                patterns: '**/*.txt'
+              - powershell: |
+                  ls $(Pipeline.Workspace)/
+                  ls $(Pipeline.Workspace)/Extension/
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Extension -Recurse -Force
+                displayName: Scorch workspace
+

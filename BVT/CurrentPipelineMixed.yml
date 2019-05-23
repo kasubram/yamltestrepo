@@ -1,0 +1,165 @@
+#trigger: none
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    pool: Hosted
+    steps:
+    - script: echo Hello, world! This is CI job
+      displayName: 'Run a one-line script'
+
+    - task: PublishPipelineArtifact@0
+      displayName: Create Artifact
+      inputs:
+        artifactName: Artifact1
+        targetPath: BVT\testFolder
+
+    - upload: BVT\Extension
+      artifact: Extension
+    
+    - task: PublishBuildArtifacts@1
+      displayName: Create Artifact
+      inputs:
+        artifactName: Artifact2
+        PathtoPublish: BVT\src
+
+    - task: PublishBuildArtifacts@1
+      displayName: Create Artifact
+      inputs:
+        artifactName: Artifact3
+        PathtoPublish: BVT\NewTestFolder
+
+- stage: QA
+  displayName: QA stage
+  jobs:
+  - job: NoArtifactJob
+    pool: Hosted
+    steps:
+      - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+
+  - job: DownloadAllArtifactJob
+    pool: Hosted
+    steps:
+      - download: current
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact1
+          ls $(Pipeline.Workspace)/Artifact1/a.txt
+          ls $(Pipeline.Workspace)/Extension/
+          ls $(Pipeline.Workspace)/Extension/Extension.txt
+          ls $(Pipeline.Workspace)/Artifact2/
+          ls $(Pipeline.Workspace)/Artifact2/App.js
+          ls $(Pipeline.Workspace)/Artifact3/
+          ls $(Pipeline.Workspace)/Artifact3/test.ps1
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\Extension -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+          Remove-Item $(Pipeline.Workspace)\Artifact3 -Recurse -Force
+        displayName: Scorch workspace
+
+  - job: DownloadParticularPipelineArtifact
+    pool: Hosted
+    steps:
+      - download: current
+        artifact: Artifact1
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact1
+          ls $(Pipeline.Workspace)/Artifact1/a.txt
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+        displayName: Scorch workspace
+
+  - job: DownloadParticularFCSArtifact
+    pool: Hosted
+    steps:
+      - download: current
+        artifact: Artifact3
+      - powershell: |
+          ls $(Pipeline.Workspace)/
+          ls $(Pipeline.Workspace)/Artifact3
+          ls $(Pipeline.Workspace)/Artifact3/test.ps1
+      - powershell: |
+          Remove-Item $(Pipeline.Workspace)\Artifact3 -Recurse -Force
+        displayName: Scorch workspace
+
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: Deploy1
+    displayName: Download All Artifacts
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            - powershell: |
+                ls $(Pipeline.Workspace)/
+                ls $(Pipeline.Workspace)/Artifact1
+                ls $(Pipeline.Workspace)/Artifact1/a.txt
+                ls $(Pipeline.Workspace)/Extension/
+                ls $(Pipeline.Workspace)/Extension/Extension.txt
+                ls $(Pipeline.Workspace)/Artifact2/
+                ls $(Pipeline.Workspace)/Artifact2/App.js
+                ls $(Pipeline.Workspace)/Artifact3/
+                ls $(Pipeline.Workspace)/Artifact3/test.ps1
+            - powershell: |
+                Remove-Item $(Pipeline.Workspace)\Artifact1 -Recurse -Force
+                Remove-Item $(Pipeline.Workspace)\Extension -Recurse -Force
+                Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+                Remove-Item $(Pipeline.Workspace)\Artifact3 -Recurse -Force
+              displayName: Scorch workspace
+
+  - deployment: Deploy2
+    displayName: Download mentioned pipeline Artifacts
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: current
+                artifact: Extension
+              - powershell: |
+                  ls $(Pipeline.Workspace)/Extension/
+                  ls $(Pipeline.Workspace)/Extension/Extension.txt
+                  ls $(Pipeline.Workspace)/Extension/zip
+                  ls $(Pipeline.Workspace)/Extension/vsix
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Extension -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy3
+    displayName: Download mentioned FCS Artifacts
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: current
+                artifact: Artifact2
+                path: MyExtension # In a DG this should be ignore and pipeline creation should not fail
+                patterns: '**/*.js'
+              - powershell: |
+                  ls $(Pipeline.Workspace)/Artifact2/
+              - powershell: |
+                  Remove-Item $(Pipeline.Workspace)\Artifact2 -Recurse -Force
+                displayName: Scorch workspace
+
+  - deployment: Deploy4
+    displayName: Download None
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: none
+              - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
+                displayName: Explore workspace
