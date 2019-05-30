@@ -6,7 +6,7 @@ stages:
   jobs:  
   - job: Build
     displayName: Build job
-    pool: Hosted
+    pool: default
     steps:
     - script: echo Hello, world! This is CI job
       displayName: 'Run a one-line script'
@@ -36,12 +36,12 @@ stages:
   displayName: QA stage
   jobs:
   - job: NoArtifactJob
-    pool: Hosted
+    pool: default
     steps:
       - powershell: ls $(Pipeline.Workspace) -r #Check the content of the workspace directory
 
   - job: DownloadAllArtifactJob
-    pool: Hosted
+    pool: default
     steps:
       - download: current
       - powershell: |
@@ -62,7 +62,7 @@ stages:
         displayName: Scorch workspace
 
   - job: DownloadParticularPipelineArtifact
-    pool: Hosted
+    pool: default
     steps:
       - download: current
         artifact: Artifact1
@@ -75,7 +75,7 @@ stages:
         displayName: Scorch workspace
 
   - job: DownloadParticularFCSArtifact
-    pool: Hosted
+    pool: default
     steps:
       - download: current
         artifact: Artifact3
@@ -92,7 +92,7 @@ stages:
   jobs:  
   - deployment: Deploy1
     displayName: Download All Artifacts
-    pool: hosted
+    pool: default
     environment: Environment01
     strategy:
         runOnce:
@@ -117,7 +117,7 @@ stages:
 
   - deployment: Deploy2
     displayName: Download mentioned pipeline Artifacts
-    pool: hosted
+    pool: default
     environment: Environment01
     strategy:
         runOnce:
@@ -136,7 +136,7 @@ stages:
 
   - deployment: Deploy3
     displayName: Download mentioned FCS Artifacts
-    pool: hosted
+    pool: default
     environment: Environment01
     strategy:
         runOnce:
@@ -154,7 +154,7 @@ stages:
 
   - deployment: Deploy4
     displayName: Download None
-    pool: hosted
+    pool: default
     environment: Environment01
     strategy:
         runOnce:
