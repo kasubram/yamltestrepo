@@ -19,8 +19,8 @@ resources:
         - test1
         - test3
   - pipeline: MyPipeline3
-    project: p1
-    source: source-pipeline
+    project: p2
+    source: p2
     trigger:
       branches:
         - release
