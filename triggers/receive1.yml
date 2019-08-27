@@ -18,6 +18,12 @@ resources:
       tags:
         - test1
         - test3
+  - pipeline: MyPipeline3
+    project: p1
+    source: source-pipeline
+    trigger:
+      branches:
+        - release
 
 jobs:
 - job: Job1
