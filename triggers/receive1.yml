@@ -17,7 +17,7 @@ resources:
         - release
       tags:
         - test1
-        - test2
+        - test3
 
 jobs:
 - job: Job1
