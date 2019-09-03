@@ -23,6 +23,9 @@ resources:
     source: p2
     trigger:
       branches:
+       include:
+         - releases/*
+       exclude:
         - release
 
 jobs:
