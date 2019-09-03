@@ -17,8 +17,8 @@ resources:
     trigger:
       branches:
         - release
-      tags:
-        - test1
+      # tags:
+      #   - test1
         - test3
       stages:
       - __default
