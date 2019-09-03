@@ -24,7 +24,7 @@ resources:
     trigger:
       branches:
        include:
-         - releases/*
+        - releases/*
        exclude:
         - release
 
