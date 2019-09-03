@@ -23,10 +23,10 @@ resources:
     source: p2
     trigger:
       branches:
-       include:
-       - releases/*
-       exclude:
-       - release
+        include:
+        - releases/*
+        exclude:
+        - release
 
 jobs:
 - job: Job1
