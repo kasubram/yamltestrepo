@@ -20,6 +20,9 @@ resources:
       tags:
         - test1
         - test3
+      stages:
+      - __default
+
   - pipeline: MyPipeline3
     project: p2
     source: p2
