@@ -9,8 +9,8 @@ resources:
         - master
         exclude:
         - release
-      stages:
-      - __default
+      # stages:
+      # - __default
   - pipeline: MyPipeline2
     project: p1
     source: source-pipeline
