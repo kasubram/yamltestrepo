@@ -24,9 +24,9 @@ resources:
     trigger:
       branches:
        include:
-        - releases/*
+       - releases/*
        exclude:
-        - release
+       - release
 
 jobs:
 - job: Job1
