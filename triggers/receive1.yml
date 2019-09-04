@@ -9,9 +9,9 @@ resources:
         - master
         exclude:
         - release
-      stages:
-      - Build
-      - Dev
+      # stages:
+      # - Build
+      # - Dev
   # - pipeline: MyPipeline2
   #   project: p1
   #   source: source-pipeline
