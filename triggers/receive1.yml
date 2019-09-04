@@ -10,7 +10,7 @@ resources:
         exclude:
         - release
       stages:
-      - Build
+      - __default
   - pipeline: MyPipeline2
     project: p1
     source: source-pipeline
