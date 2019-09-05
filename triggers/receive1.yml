@@ -26,15 +26,15 @@ resources:
   #     stages:
   #     - __default
 
-  - pipeline: MyPipeline3
-    project: p2
-    source: p2
-    trigger:
-      branches:
-        include:
-        - releases/*
-        exclude:
-        - release
+  # - pipeline: MyPipeline3
+  #   project: p2
+  #   source: p2
+  #   trigger:
+  #     branches:
+  #       include:
+  #       - releases/*
+  #       exclude:
+  #       - release
 
 jobs:
 - job: Job1
