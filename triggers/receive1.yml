@@ -11,7 +11,7 @@ resources:
         - master
         - test
         exclude:
-        - release
+        - release/*
       # stages:
       # - Build
       # - Dev
