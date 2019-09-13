@@ -9,6 +9,7 @@ resources:
       branches:
         include:
         - master
+        - test
         exclude:
         - release
       # stages:
