@@ -12,7 +12,7 @@ jobs:
     steps:
       - script: echo download all artifact
       - downloadBuild: MyJenkins
-        path: $(Pipeline.workspace)/foo
+        path: foo
       - downloadBuild: MyJenkins
       #   displayName: Download Folder project
       #   patterns: '*.txt'
