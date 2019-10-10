@@ -1,17 +1,17 @@
 trigger: none
 
-resources:
-  pipelines:
-  - pipeline: MyPipeline
-    project: p1
-    source: source-pipeline
-    trigger:
-      branches:
-        include:
-        - master
-        - test
-        exclude:
-        - release/*
+# resources:
+#   pipelines:
+#   - pipeline: MyPipeline
+#     project: p1
+#     source: source-pipeline
+#     trigger:
+#       branches:
+#         include:
+#         - master
+#         - test
+#         exclude:
+#         - release/*
       # stages:
       # - Build
       # - Dev
