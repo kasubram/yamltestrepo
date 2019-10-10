@@ -1,10 +1,10 @@
 trigger: none
 
-# resources:
-#   pipelines:
-#   - pipeline: MyPipeline
-#     project: p1
-#     source: source-pipeline
+resources:
+  pipelines:
+  - pipeline: MyPipeline
+    project: p1
+    source: kasubram.yamltestrepo
 #     trigger:
 #       branches:
 #         include:
@@ -43,5 +43,6 @@ jobs:
 
   steps:
     - powershell: Write-Host "HelloWorld"
+    - download: MyPipeline
 
 #test11
