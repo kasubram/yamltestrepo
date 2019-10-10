@@ -5,7 +5,7 @@ resources:
   - pipeline: MyPipeline
     project: p1
     source: kasubram.yamltestrepo
-#     trigger:
+    trigger: true
 #       branches:
 #         include:
 #         - master
