@@ -5,7 +5,10 @@ resources:
  pipelines:
      - pipeline: MyPipeline
        source: ajayProject
-       trigger: true
+       trigger: 
+         branches:
+          exclude:
+              - master
 steps:
  - script: echo "hello world"
  - download: MyPipeline
