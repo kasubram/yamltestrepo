@@ -1,3 +1,5 @@
+pool: Hosted
+
 steps:
  - script: echo "hello world"
  
