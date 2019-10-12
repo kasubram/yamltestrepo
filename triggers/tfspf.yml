@@ -1,7 +1,11 @@
 trigger: none
-
 pool: Hosted
 
+resources:
+ pipelines:
+     - pipeline: MyPipeline
+       source: ajayProject
 steps:
  - script: echo "hello world"
+ - download: MyPipeline
  
