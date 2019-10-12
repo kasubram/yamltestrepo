@@ -5,7 +5,8 @@ resources:
  pipelines:
      - pipeline: MyPipeline
        source: ajayProject
+       trigger: true
 steps:
  - script: echo "hello world"
  - download: MyPipeline
- 
+
