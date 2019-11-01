@@ -1,0 +1,13 @@
+
+resources:
+  pipelines:
+    - pipeline: MyPipeline
+      source: kasubram.yamltestrepo
+
+trigger: none
+pool: hosted
+
+steps:
+- download: MyPipeline
+- powershell: ls -r $(Pipeline.Workspace)
+
