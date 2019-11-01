@@ -4,7 +4,7 @@ stages:
 - stage: Build
   jobs:
   - job: Job1
-    pool: default
+    pool: hosted
     steps:
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
@@ -15,7 +15,7 @@ stages:
 - stage: Test
   jobs:
   - job: Job1
-    pool: default
+    pool: hosted
     steps:
       - task: PublishBuildArtifacts@1
         displayName: Publish TestFolder
