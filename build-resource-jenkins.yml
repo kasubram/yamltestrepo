@@ -1,3 +1,5 @@
+trigger: none
+
 resources:
   builds:
   - build: MyJenkins
