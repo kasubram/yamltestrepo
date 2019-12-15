@@ -8,7 +8,7 @@ jobs:
   steps:
   - template: downloadJenkinsStepsTemplate.yml
 
-- deployment: DeploymentJob
+- deployment: DeploymentJob ${{ parameters.name }}
   pool: ${{ parameters.pool }}
   environment: Environment01
   strategy:
