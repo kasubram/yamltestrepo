@@ -21,7 +21,8 @@ steps:
   
 - downloadBuild: MyJenkins
   patterns: '*.foo'
-
+  displayName: download specific files from Jenkin artifact
+  
 - powershell: |
     if (-not (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
     {
