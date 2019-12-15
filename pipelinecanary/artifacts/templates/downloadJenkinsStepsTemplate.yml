@@ -20,7 +20,7 @@ steps:
   continueOnError: true
   
 - downloadBuild: MyJenkins
-  patterns: '*.foo'
+  patterns: '*.yml'
   displayName: download specific files from Jenkin artifact
   
 - powershell: |
