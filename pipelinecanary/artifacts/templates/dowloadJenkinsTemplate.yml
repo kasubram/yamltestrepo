@@ -9,9 +9,10 @@ steps:
     (Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf) -and 
     (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
     {
-       return -1;
+       Write-Error 'Can't find file from downloaded artifact'
     } 
   displayName: Verify artifact download
+  failOnStderr: true
   
 - powershell: |
     rm -r $(pipeline.workspace)/MyJenkins
@@ -24,6 +25,7 @@ steps:
 - powershell: |
     if (-not (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
     {
-       return -1;
+       Write-Error 'Can't find file vsts-ci.yml from downloaded artifact'
     }
-  displayName: Verify artifact download with pattern  
+  displayName: Verify artifact download pattern  
+  failOnStderr: true
