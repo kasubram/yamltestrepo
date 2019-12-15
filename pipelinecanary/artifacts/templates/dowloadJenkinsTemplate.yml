@@ -4,13 +4,13 @@ steps:
   
 - powershell: |
     ls -r $(pipeline.workspace)/MyJenkins
-    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf -and
-              Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf -and
-              Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf -and 
-              Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf -and))
+    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf) -and
+    (Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf) -and
+    (Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf) -and 
+    (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
     {
        return -1;
-    }      
+    } 
   displayName: Verify artifact download
   
 - powershell: |
