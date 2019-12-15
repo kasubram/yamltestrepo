@@ -1,1 +1,13 @@
-test
+resources:
+ builds:
+     - build: MyJenkins
+       connection: rmcdpjenkins
+       type: Jenkins
+       source: ReleaseManagement/RMCDP/RMCDPProject-FreeStyle
+
+jobs:
+- job: Ubuntu1604
+  pool: $[ coalesce(variables.ubuntu1604, 'Hosted Ubuntu 1604') ]
+  steps:
+  - template: pipelinecanary/artifacts/templates/dowloadJenkinsTemplate.yml
+
