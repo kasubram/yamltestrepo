@@ -1,12 +1,29 @@
 steps:
 - downloadBuild: MyJenkins
   displayName: download Jenkins artifact
+  
 - powershell: |
     ls -r $(pipeline.workspace)/MyJenkins
-        
+    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf -and
+              Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf -and
+              Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf -and 
+              Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf -and))
+    {
+       return -1;
+    }      
   displayName: Verify artifact download
+  
+- powershell: |
+    rm -r $(pipeline.workspace)/MyJenkins
+  displayName: clear workspace
+  continueOnError: true
+  
 - downloadBuild: MyJenkins
   patterns: '*.foo'
+  
 - powershell: |
-    Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf
+    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
+    {
+       return -1;
+    }
   displayName: Verify artifact download with pattern  
