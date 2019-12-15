@@ -10,10 +10,60 @@ jobs:
   parameters:
     name: Ubuntu1604
     pool: $[ coalesce(variables.ubuntu1604, 'Hosted Ubuntu 1604') ]
-#      vmImage: 'macOS-10.13'
-#jobs:
-#- job: Ubuntu1604
-#  pool: $[ coalesce(variables.ubuntu1604, 'Hosted Ubuntu 1604') ]
-#  steps:
-#  - template: artifacts/templates/dowloadJenkinsTemplate.yml
 
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: Ubuntu1804
+    pool: $[ coalesce(variables.ubuntu1804, 'Hosted Ubuntu 1804') ]
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: HostedVS2017
+    pool: $[ coalesce(variables.vs2017, 'Hosted VS2017') ]
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: HostedWindows2019WithVS2019
+    pool: $[ coalesce(variables.vs2019, 'Hosted Windows 2019 with VS2019') ]
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSPublicMojave
+    pool:
+      name: 'LimitedPublicMojave'
+      vmImage: 'macos-10.14'
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSInternalMojave
+    pool:
+      name: 'LimitedInternalMojave'
+      vmImage: 'internal-macos-10.14'
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSInternalHighSierra
+    pool: 
+      name: 'LimitedInternalMojave'
+      vmImage: 'internal-macos-10.14'
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSInternalSierra
+    pool: 
+      name: 'LimitedInternalSierra'
+      vmImage: 'internal-macos-10.12'
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSAppCenterMojave
+    pool: 
+      name: 'LimitedAppCenterMojave'
+      vmImage: 'appcenter-macos-10.14'
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: MacOSAppCenterHighSierra
+    pool: 
+      name: 'LimitedAppCenterHS'
+      vmImage: 'appcenter-macos-10.13'
