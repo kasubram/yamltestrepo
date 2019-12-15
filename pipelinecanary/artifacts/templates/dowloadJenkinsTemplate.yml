@@ -6,33 +6,4 @@ jobs:
 - job: ${{ parameters.name }}
   pool: ${{ parameters.pool }}
   steps:
-  - downloadBuild: MyJenkins
-    displayName: download Jenkins artifact
-
-  - powershell: |
-      ls -r $(pipeline.workspace)/MyJenkins
-      if (-not (Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf) -and
-      (Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf) -and
-      (Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf) -and 
-      (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
-      {
-         Write-Error "Can't find file from downloaded artifact"
-      } 
-    displayName: Verify artifact download
-    failOnStderr: true
-
-  - powershell: |
-      rm -r $(pipeline.workspace)/MyJenkins
-    displayName: clear workspace
-    continueOnError: true
-
-  - downloadBuild: MyJenkins
-    patterns: '*.foo'
-
-  - powershell: |
-      if (-not (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
-      {
-         Write-Error "Can't find file vsts-ci.yml from downloaded artifact"
-      }
-    displayName: Verify artifact download pattern  
-    failOnStderr: true
+  - template: downloadJenkinsStepsTemplate.yml
