@@ -9,10 +9,10 @@ jobs:
   - template: downloadJenkinsStepsTemplate.yml
 
 - deployment: DeploymentJob
-    pool: ${{ parameters.pool }}
-    environment: Environment01
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-            - template: downloadJenkinsStepsTemplate.yml
+  pool: ${{ parameters.pool }}
+  environment: Environment01
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - template: downloadJenkinsStepsTemplate.yml
