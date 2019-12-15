@@ -3,14 +3,7 @@ steps:
   displayName: download Jenkins artifact
 - powershell: |
     ls -r $(pipeline.workspace)/MyJenkins
-    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/JenkinsFile -PathType Leaf -and
-              Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf -and
-              Test-Path $(pipeline.workspace)/MyJenkins/README.MD -PathType Leaf -and 
-              Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf -and))
-    {
-       return -1;
-    }
-    
+        
   displayName: Verify artifact download
 - downloadBuild: MyJenkins
   patterns: '*.foo'
