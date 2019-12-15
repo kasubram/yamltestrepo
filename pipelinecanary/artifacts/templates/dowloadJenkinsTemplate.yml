@@ -1,4 +1,4 @@
 steps:
 - downloadBuild: MyJenkins
 - downloadBuild: MyJenkins
-  patterns: '*.yml'
+  patterns: '*.foo'
