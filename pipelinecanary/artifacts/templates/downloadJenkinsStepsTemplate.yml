@@ -5,10 +5,10 @@ steps:
 
 - powershell: |
     ls -r $(pipeline.workspace)/MyJenkins
-    if (-not (Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf) -and
+    if (-not ((Test-Path $(pipeline.workspace)/MyJenkins/Jenkinsfile -PathType Leaf) -and
     (Test-Path $(pipeline.workspace)/MyJenkins/master.txt -PathType Leaf) -and
     (Test-Path $(pipeline.workspace)/MyJenkins/README.md -PathType Leaf) -and 
-    (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf))
+    (Test-Path $(pipeline.workspace)/MyJenkins/vsts-ci.yml -PathType Leaf)))
     {
        Write-Error "Can't find file from downloaded artifact"
     } 
