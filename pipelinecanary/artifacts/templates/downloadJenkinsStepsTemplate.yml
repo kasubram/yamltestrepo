@@ -1,6 +1,7 @@
 steps:
 - downloadBuild: MyJenkins
   displayName: download Jenkins artifact
+  patterns: '*.yml'
 
 - powershell: |
     ls -r $(pipeline.workspace)/MyJenkins
