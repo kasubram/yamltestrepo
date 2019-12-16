@@ -10,3 +10,8 @@ jobs:
   parameters:
     name: Ubuntu1604
     pool: $[ coalesce(variables.ubuntu1604, 'Hosted Ubuntu 1604') ]
+
+- template: artifacts/templates/dowloadJenkinsTemplate.yml
+  parameters:
+    name: Ubuntu1804
+    pool: $[ coalesce(variables.ubuntu1804, 'Hosted Ubuntu 1804') ]
