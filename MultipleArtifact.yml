@@ -1,0 +1,18 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'BVT'
+    ArtifactName: 'BVT'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Extension'
+    ArtifactName: 'Extension'
+    publishLocation: 'Container'    
