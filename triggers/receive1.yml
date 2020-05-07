@@ -1,6 +1,4 @@
 trigger: none
-#test
-
 resources:
   pipelines:
   - pipeline: MyPipeline
