@@ -1,10 +1,10 @@
 trigger: none
 
-resources:
-  pipelines:
-  - pipeline: MyPipeline
-    #project: p1
-    source: Source Build
+# resources:
+#   pipelines:
+#   - pipeline: MyPipeline
+#     #project: p1
+#     source: Source Build
     # trigger: 
     #   branches:
     #     include:
