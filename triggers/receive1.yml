@@ -5,10 +5,10 @@ resources:
   - pipeline: MyPipeline
     #project: p1
     source: Source Build
-    trigger: true
-#       branches:
-#         include:
-#         - master
+    trigger: 
+      branches:
+        include:
+        - master
 #         - test
 #         exclude:
 #         - release/*
