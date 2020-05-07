@@ -42,7 +42,7 @@ jobs:
   pool: default
 
   steps:
-    - powershell: Write-Host "HelloWorld"
+    - checkout: none
     - download: MyPipeline
 
 #test11
