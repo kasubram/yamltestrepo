@@ -4,4 +4,6 @@ parameters:
   default: false
 
 steps:
+- checkout: none
+- download: mypipeline
 - script: echo ${{ parameters.yesNo }}
