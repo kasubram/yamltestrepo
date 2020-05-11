@@ -1,0 +1,11 @@
+trigger: none
+pool: default
+
+resources:
+ pipelines:
+   - pipeline: mypipeline
+     source:  MyFirstProject
+
+steps:
+- checkout: none
+- download: mypipeline
