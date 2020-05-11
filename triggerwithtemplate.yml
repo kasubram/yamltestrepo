@@ -7,6 +7,10 @@ resources:
      source:  MyFirstProject
      #trigger: true
 
-steps:
-- checkout: none
-- download: mypipeline
+# steps:
+# - checkout: none
+# - download: mypipeline
+extends:
+  template: template.yml
+  parameters:
+      yesNo: false 
