@@ -5,6 +5,7 @@ resources:
  pipelines:
    - pipeline: mypipeline
      source:  MyFirstProject
+     trigger: true
 
 steps:
 - checkout: none
