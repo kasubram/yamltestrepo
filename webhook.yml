@@ -6,4 +6,5 @@ resources:
        connection: webhook1
 
 steps:
+- checkout: none
 - powershell: Write-Host 'Hello, World!'
