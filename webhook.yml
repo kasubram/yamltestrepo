@@ -1,1 +1,9 @@
 trigger: none
+
+resources:
+ webhooks:
+     - webhook: mywebhook
+       connection: webhook1
+
+steps:
+- powershell: Write-Host 'Hello, World!'
