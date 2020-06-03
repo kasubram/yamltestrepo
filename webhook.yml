@@ -9,4 +9,4 @@ resources:
 
 steps:
 - checkout: none
-- powershell: Write-Host 'Hello, World!'
+- powershell: Write-Host "${{ parameters.mywebhook.repository.id }}"
