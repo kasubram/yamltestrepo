@@ -16,3 +16,4 @@ resources:
 steps:
 - checkout: none
 - downloadBuild: mybuild
+- powershell: Write-Host "$(resources.container.Constoso.tag)"
