@@ -1,1 +1,11 @@
-test
+trigger: none
+resources:
+ builds:
+     - build: mybuild
+       type: Jenkins
+       connection: jenkins
+       source: rogoyal
+
+steps:
+- checkout: none
+- downloadBuild: mybuild
