@@ -9,4 +9,4 @@ resources:
 
 steps:
 - checkout: none
-- powershell: Write-Host "${{ parameters.mywebhook.repository.id }}"
+- powershell: Write-Host "${{ parameters.mywebhook.repository.owner.email }}"
