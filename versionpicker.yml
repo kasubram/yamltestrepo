@@ -1,0 +1,11 @@
+trigger: none
+resources:
+ builds:
+     - build: mybuild
+       type: Jenkins
+       connection: rmcdpjenkins3
+       source: rogoyal
+
+steps:
+- checkout: none
+- downloadBuild: mybuild

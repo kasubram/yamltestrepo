@@ -1,0 +1,12 @@
+trigger: none
+
+resources:
+ webhooks:
+     - webhook: mywebhook
+       connection: webhook1
+#test
+
+
+steps:
+- checkout: none
+- powershell: Write-Host "${{ parameters.mywebhook.repository.owner.email }}"
