@@ -4,6 +4,9 @@ resources:
  webhooks:
      - webhook: mywebhook
        connection: webhook1
+       filters:
+         - path: repository.name
+           value: kasubram1
 #test
 
 
