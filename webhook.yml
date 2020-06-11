@@ -5,7 +5,7 @@ resources:
      - webhook: mywebhook
        connection: webhook1
        filters:
-         - path: repository.name
+         - path: repository.owner.name
            value: kasubram1
 #test
 
