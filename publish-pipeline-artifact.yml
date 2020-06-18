@@ -1,14 +1,29 @@
 trigger: none
 variables:
   skipComponentGovernanceDetection: true
+pool: default
 
 jobs:
 - job: job1
   steps:
-  - publish: testFolder
-    artifact: testFolder
-    displayName:  publish testFolder
+  - publish: README.md
+    artifact: pipeline
+    displayName:  publish pipeline artifact
+  - task: PublishBuildArtifacts@1
+    displayName:  publish fcs artifact
+    inputs:
+      PathtoPublish: 'README.md'
+      ArtifactName: 'fcs'
+      publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    displayName:  publish fileshare artifact
+    inputs:
+      PathtoPublish: 'README.md'
+      ArtifactName: 'unc'
+      publishLocation: 'FilePath'
+      TargetPath: '\\kalyan-dev\share\temp'
 - job: job2
   dependsOn: job1
   steps:
   - download: current
+  - powershell: Write-Host "$(Pipeline.Workspace)"
