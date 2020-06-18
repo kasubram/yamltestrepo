@@ -1,0 +1,24 @@
+trigger: none
+
+stages:
+- stage: Build
+  jobs:
+  - job: Job1
+    pool: default
+    steps:
+      - task: PublishBuildArtifacts@1
+        displayName: Publish TestFolder
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1
+
+- stage: Test
+  jobs:
+  - job: Job1
+    pool: default
+    steps:
+      - task: PublishBuildArtifacts@1
+        displayName: Publish TestFolder
+        inputs:
+          pathToPublish: testFolder
+          artifactName: Artifact1
