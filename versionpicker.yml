@@ -5,7 +5,15 @@ resources:
        type: Jenkins
        connection: rmcdpjenkins3
        source: rogoyal
+ containers:
+   - container: Constoso
+     type: ACR
+     azureSubscription: ashkir_rmpm_kasubram
+     resourceGroup: ashkir
+     registry: ashkirACR
+     repository: ashokirlaahsimplegorepo
 
 steps:
 - checkout: none
 - downloadBuild: mybuild
+- powershell: Write-Host "$(resources.container.Constoso.tag)"

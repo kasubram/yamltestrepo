@@ -1,0 +1,14 @@
+trigger: none
+variables:
+  skipComponentGovernanceDetection: true
+
+jobs:
+- job: job1
+  steps:
+  - publish: testFolder
+    artifact: testFolder
+    displayName:  publish testFolder
+- job: job2
+  dependsOn: job1
+  steps:
+  - download: current
