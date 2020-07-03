@@ -1,7 +1,7 @@
 trigger: none
 variables:
   skipComponentGovernanceDetection: true
-pool: default
+#pool: default
 
 jobs:
 - job: job1
@@ -15,13 +15,13 @@ jobs:
       PathtoPublish: 'README.md'
       ArtifactName: 'fcs'
       publishLocation: 'Container'
-  - task: PublishBuildArtifacts@1
-    displayName:  publish fileshare artifact
-    inputs:
-      PathtoPublish: 'README.md'
-      ArtifactName: 'unc'
-      publishLocation: 'FilePath'
-      TargetPath: '\\kalyan-dev\share\temp'
+  # - task: PublishBuildArtifacts@1
+  #   displayName:  publish fileshare artifact
+  #   inputs:
+  #     PathtoPublish: 'README.md'
+  #     ArtifactName: 'unc'
+  #     publishLocation: 'FilePath'
+  #     TargetPath: '\\kalyan-dev\share\temp'
 - job: job2
   dependsOn: job1
   steps:
